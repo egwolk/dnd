@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Debt&Debris"
-run/main_scene="uid://ct8n7ck26t4nw"
+run/main_scene="uid://bpytggwtypucg"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

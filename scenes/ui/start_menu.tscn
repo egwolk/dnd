@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bpytggwtypucg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="start_menu" type="Control" unique_id=825406133]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1568974930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=878217017]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="menu_elements" type="VBoxContainer" parent="PanelContainer" unique_id=68037385]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="game_title" type="Label" parent="PanelContainer/menu_elements" unique_id=1967537971]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Debt & Debris"
+
+[node name="menu_btns" type="VBoxContainer" parent="PanelContainer/menu_elements" unique_id=791665644]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="new_game" type="Button" parent="PanelContainer/menu_elements/menu_btns" unique_id=1506013165]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "New Game"
+
+[node name="coninue" type="Button" parent="PanelContainer/menu_elements/menu_btns" unique_id=1586862187]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "Continue"
+
+[node name="extras" type="Button" parent="PanelContainer/menu_elements/menu_btns" unique_id=1968187938]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "Extras"
+
+[node name="config" type="Button" parent="PanelContainer/menu_elements/menu_btns" unique_id=770755858]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "Config"
+
+[node name="quit" type="Button" parent="PanelContainer/menu_elements/menu_btns" unique_id=2065570494]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "Quit"
