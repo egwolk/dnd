@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d3j8d6wn1uegw"]
+
+[ext_resource type="Script" uid="uid://dfcx5ec54l52e" path="res://scripts/ui/extras_screen.gd" id="1_jjx7e"]
+
+[node name="extras_screen" type="Control" unique_id=825406133]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jjx7e")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1568974930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=878217017]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="menu_elements" type="VBoxContainer" parent="PanelContainer" unique_id=68037385]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="game_title" type="Label" parent="PanelContainer/menu_elements" unique_id=1967537971]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "EXTRAS SCREEN"
