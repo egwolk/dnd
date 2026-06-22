@@ -83,6 +83,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Extras"
 
 [node name="config" type="Button" parent="PanelContainer/menu_elements/menu_btns" unique_id=770755858]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
