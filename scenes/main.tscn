@@ -1,3 +1,12 @@
 [gd_scene format=3 uid="uid://ct8n7ck26t4nw"]
 
 [node name="Main" type="Node2D" unique_id=619512828]
+
+[node name="Label" type="Label" parent="." unique_id=700243209]
+offset_left = 639.0
+offset_top = 330.0
+offset_right = 768.0
+offset_bottom = 377.66666
+text = "GAMEPLAY HERE
+WOWWW"
+horizontal_alignment = 1

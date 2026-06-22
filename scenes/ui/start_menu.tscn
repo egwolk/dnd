@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bpytggwtypucg"]
 
+[ext_resource type="Script" uid="uid://btkshv1wdubn6" path="res://scripts/ui/start_menu.gd" id="1_irhji"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
 content_margin_left = 25.0
 content_margin_top = 25.0
@@ -19,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_irhji")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1568974930]
 layout_mode = 1
@@ -51,6 +54,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="new_game" type="Button" parent="PanelContainer/menu_elements/menu_btns" unique_id=1506013165]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
