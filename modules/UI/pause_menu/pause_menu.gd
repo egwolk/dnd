@@ -16,4 +16,4 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func quit() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/ui/start_menu.tscn")
+	scene_manager.goto_scene("res://modules/UI/start_menu/start_menu.tscn")

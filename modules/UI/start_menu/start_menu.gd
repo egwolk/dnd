@@ -1,4 +1,4 @@
-extends Control
+class_name start_menu extends Control
 
 
 func _ready() -> void:
@@ -6,7 +6,7 @@ func _ready() -> void:
 	%quit.pressed.connect(quit)
 
 func newGame() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	scene_manager.goto_scene("res://modules/elements/game/game.tscn")
 
 func quit() -> void:
 	get_tree().quit()
