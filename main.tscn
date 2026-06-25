@@ -5,7 +5,7 @@
 [node name="main" type="Node" unique_id=1818043722]
 script = ExtResource("1_h2yge")
 
-[node name="CurrentScene" type="Control" parent="." unique_id=1250879234]
+[node name="current_scene" type="Control" parent="." unique_id=1250879234]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
