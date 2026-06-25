@@ -1,0 +1,1 @@
+class_name game_state extends LimboState
