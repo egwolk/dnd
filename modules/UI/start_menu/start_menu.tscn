@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://3pw6gbv3qm7v" path="res://modules/UI/start_menu/start_menu_state.gd" id="2_sutdh"]
 [ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="2_ysrcj"]
 [ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="3_mj48n"]
+[ext_resource type="Script" uid="uid://dgdv2an2p8w5y" path="res://modules/UI/config_submenu_menu/config_menu_state.gd" id="6_sutdh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
 content_margin_left = 25.0
@@ -117,17 +118,18 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Quit"
 
-[node name="config_screen" parent="start_menu_controller/start_menu_state/start_menu" unique_id=714661705 instance=ExtResource("2_ysrcj")]
-visible = false
-layout_mode = 1
-mouse_filter = 2
-
 [node name="extras_menu_state" type="LimboState" parent="start_menu_controller" unique_id=1773854645]
 script = ExtResource("2_mj48n")
 
 [node name="extras_screen" parent="start_menu_controller/extras_menu_state" unique_id=1402250385 instance=ExtResource("3_mj48n")]
 mouse_filter = 2
 
+[node name="config_menu_state" type="LimboState" parent="start_menu_controller" unique_id=973107331]
+script = ExtResource("6_sutdh")
+
+[node name="config_screen" parent="start_menu_controller/config_menu_state" unique_id=714661705 instance=ExtResource("2_ysrcj")]
+visible = false
+mouse_filter = 2
+
 [connection signal="pressed" from="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/extras" to="start_menu_controller/start_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
-[connection signal="pressed" from="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/config" to="start_menu_controller/start_menu_state/start_menu/config_screen" method="show"]
-[connection signal="pressed" from="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/config" to="start_menu_controller/start_menu_state/start_menu/config_screen" method="set_mouse_filter" binds= [0]]
+[connection signal="pressed" from="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/config" to="start_menu_controller/start_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
