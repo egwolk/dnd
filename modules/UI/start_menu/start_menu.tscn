@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bpytggwtypucg"]
 
-[ext_resource type="Script" uid="uid://btkshv1wdubn6" path="res://scripts/ui/start_menu.gd" id="1_irhji"]
-[ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://scenes/ui/config_screen.tscn" id="2_0kjv3"]
-[ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://scenes/ui/extras_screen.tscn" id="3_m0hmm"]
+[ext_resource type="Script" uid="uid://btkshv1wdubn6" path="res://modules/UI/start_menu/start_menu.gd" id="1_riilq"]
+[ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="2_ysrcj"]
+[ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="3_mj48n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
 content_margin_left = 25.0
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_irhji")
+script = ExtResource("1_riilq")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1568974930]
 layout_mode = 1
@@ -102,12 +102,12 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Quit"
 
-[node name="config_screen" parent="." unique_id=714661705 instance=ExtResource("2_0kjv3")]
+[node name="config_screen" parent="." unique_id=714661705 instance=ExtResource("2_ysrcj")]
 visible = false
 layout_mode = 1
 mouse_filter = 2
 
-[node name="extras_screen" parent="." unique_id=1402250385 instance=ExtResource("3_m0hmm")]
+[node name="extras_screen" parent="." unique_id=1402250385 instance=ExtResource("3_mj48n")]
 visible = false
 layout_mode = 1
 mouse_filter = 2

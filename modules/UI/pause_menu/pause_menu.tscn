@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://u5ste4no8nxa"]
 
-[ext_resource type="Script" uid="uid://gyplvd3u4c8p" path="res://scripts/ui/pause_menu.gd" id="1_6tw0m"]
-[ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://scenes/ui/extras_screen.tscn" id="2_f6eus"]
-[ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://scenes/ui/config_screen.tscn" id="3_8uki6"]
+[ext_resource type="Script" uid="uid://gyplvd3u4c8p" path="res://modules/UI/pause_menu/pause_menu.gd" id="1_6tw0m"]
+[ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="2_f6eus"]
+[ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="3_8uki6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
 content_margin_left = 25.0

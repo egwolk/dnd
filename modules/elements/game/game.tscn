@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bpyaa6jxf2nc7"]
+
+[ext_resource type="PackedScene" uid="uid://u5ste4no8nxa" path="res://modules/UI/pause_menu/pause_menu.tscn" id="1_31nab"]
+
+[node name="game" type="Node2D" unique_id=682245497]
+
+[node name="Label" type="Label" parent="." unique_id=111519417]
+offset_left = 639.0
+offset_top = 330.0
+offset_right = 768.0
+offset_bottom = 377.66666
+text = "GAMEPLAY HERE
+WOWWW"
+horizontal_alignment = 1
+
+[node name="ui_layer" type="CanvasLayer" parent="." unique_id=262218549]
+
+[node name="pause_menu" parent="ui_layer" unique_id=2089690865 instance=ExtResource("1_31nab")]
