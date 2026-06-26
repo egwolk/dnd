@@ -22,9 +22,11 @@ anti_aliasing = false
 
 [node name="start_root" type="Control" unique_id=861949142]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="start_menu_controller" type="LimboHSM" parent="." unique_id=2136663043]
 script = ExtResource("2_72xql")
