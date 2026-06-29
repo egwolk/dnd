@@ -18,6 +18,7 @@ corner_radius_bottom_left = 15
 anti_aliasing = false
 
 [node name="pause_controller" type="LimboHSM" unique_id=147246019]
+process_mode = 3
 script = ExtResource("1_1tjc1")
 
 [node name="pause_menu_state" type="LimboState" parent="." unique_id=2128550944]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bpyaa6jxf2nc7"]
 
 [ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/elements/game/game_view_state.gd" id="1_prn37"]
+[ext_resource type="VideoStream" uid="uid://6ads4q3g7urs" path="res://assets/private/tempFile-forTesting[DELETE LATER].ogv" id="2_prn37"]
 
 [node name="game_view_state" type="LimboState" unique_id=677545002]
 script = ExtResource("1_prn37")
@@ -20,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stream = ExtResource("2_prn37")
 loop = true
 
 [node name="Label" type="Label" parent="game_root" unique_id=111519417]
@@ -33,3 +35,4 @@ WOWWW"
 horizontal_alignment = 1
 
 [connection signal="entered" from="." to="game_root/game" method="play"]
+[connection signal="exited" from="." to="game_root/game" method="stop"]
