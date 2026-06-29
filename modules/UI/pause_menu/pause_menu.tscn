@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://u5ste4no8nxa"]
 
 [ext_resource type="Script" uid="uid://i6bb6ms1qqjh" path="res://modules/UI/pause_menu/pause_controller.gd" id="1_1tjc1"]
-[ext_resource type="Script" uid="uid://gyplvd3u4c8p" path="res://modules/UI/pause_menu/pause_menu.gd" id="1_6tw0m"]
 [ext_resource type="Script" uid="uid://cmvfr3w5grxuq" path="res://modules/UI/pause_menu/pause_menu_state.gd" id="2_bkm6i"]
 [ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="2_f6eus"]
 [ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="3_8uki6"]
@@ -20,21 +19,13 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 anti_aliasing = false
 
-[node name="pause_root" type="Control" unique_id=634101932]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="pause_controller" type="LimboHSM" parent="." unique_id=147246019]
+[node name="pause_controller" type="LimboHSM" unique_id=147246019]
 script = ExtResource("1_1tjc1")
 
-[node name="pause_menu_state" type="LimboState" parent="pause_controller" unique_id=2128550944]
+[node name="pause_menu_state" type="LimboState" parent="." unique_id=2128550944]
 script = ExtResource("2_bkm6i")
 
-[node name="pause_menu" type="Control" parent="pause_controller/pause_menu_state" unique_id=2089690865]
+[node name="pause_menu" type="Control" parent="pause_menu_state" unique_id=2089690865]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -42,9 +33,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6tw0m")
 
-[node name="PanelContainer" type="PanelContainer" parent="pause_controller/pause_menu_state/pause_menu" unique_id=1568974930]
+[node name="PanelContainer" type="PanelContainer" parent="pause_menu_state/pause_menu" unique_id=1568974930]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,29 +42,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="pause_controller/pause_menu_state/pause_menu/PanelContainer" unique_id=878217017]
+[node name="MarginContainer" type="MarginContainer" parent="pause_menu_state/pause_menu/PanelContainer" unique_id=878217017]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="elements" type="VBoxContainer" parent="pause_controller/pause_menu_state/pause_menu/PanelContainer" unique_id=68037385]
+[node name="elements" type="VBoxContainer" parent="pause_menu_state/pause_menu/PanelContainer" unique_id=68037385]
 layout_mode = 2
 theme_override_constants/separation = 200
 alignment = 1
 
-[node name="title" type="Label" parent="pause_controller/pause_menu_state/pause_menu/PanelContainer/elements" unique_id=1967537971]
+[node name="title" type="Label" parent="pause_menu_state/pause_menu/PanelContainer/elements" unique_id=1967537971]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "Pause Menu"
 
-[node name="menu_btns" type="VBoxContainer" parent="pause_controller/pause_menu_state/pause_menu/PanelContainer/elements" unique_id=791665644]
+[node name="menu_btns" type="VBoxContainer" parent="pause_menu_state/pause_menu/PanelContainer/elements" unique_id=791665644]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="extras" type="Button" parent="pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=1968187938]
+[node name="extras" type="Button" parent="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=1968187938]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -83,7 +73,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Extras"
 
-[node name="config" type="Button" parent="pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=770755858]
+[node name="config" type="Button" parent="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=770755858]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -92,8 +82,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Config"
 
-[node name="quit" type="Button" parent="pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=2065570494]
-unique_name_in_owner = true
+[node name="quit" type="Button" parent="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=2065570494]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -102,17 +91,21 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Quit"
 
-[node name="extras_menu_state" type="LimboState" parent="pause_controller" unique_id=985585435]
+[node name="extras_menu_state" type="LimboState" parent="." unique_id=530508125]
 script = ExtResource("4_re1nv")
-metadata/_custom_type_script = "uid://cbija5sjsbkd0"
 
-[node name="extras_screen" parent="pause_controller/extras_menu_state" unique_id=825406133 instance=ExtResource("2_f6eus")]
+[node name="extras_screen" parent="extras_menu_state" unique_id=825406133 instance=ExtResource("2_f6eus")]
+visible = false
+metadata/_edit_use_anchors_ = true
 
-[node name="config_menu_state" type="LimboState" parent="pause_controller" unique_id=582361468]
+[node name="config_menu_state" type="LimboState" parent="." unique_id=753303079]
 script = ExtResource("6_565ox")
-metadata/_custom_type_script = "uid://dgdv2an2p8w5y"
 
-[node name="config_screen" parent="pause_controller/config_menu_state" unique_id=1615277544 instance=ExtResource("3_8uki6")]
+[node name="config_screen" parent="config_menu_state" unique_id=1675153174 instance=ExtResource("3_8uki6")]
+visible = false
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/extras" to="pause_controller/pause_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
-[connection signal="pressed" from="pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/config" to="pause_controller/pause_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
+[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/extras" to="pause_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
+[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/config" to="pause_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
+[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/quit" to="pause_menu_state" method="dispatch" binds= [&"QUIT_TO_MAIN"]]

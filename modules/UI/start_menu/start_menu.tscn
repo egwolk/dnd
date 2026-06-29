@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bpytggwtypucg"]
 
-[ext_resource type="Script" uid="uid://btkshv1wdubn6" path="res://modules/UI/start_menu/start_menu.gd" id="1_riilq"]
 [ext_resource type="Script" uid="uid://cw0jh50vsrf66" path="res://modules/UI/start_menu/start_menu_controller.gd" id="2_72xql"]
 [ext_resource type="Script" uid="uid://cbija5sjsbkd0" path="res://modules/UI/extras_submenu_menu/extras_menu_state.gd" id="2_mj48n"]
 [ext_resource type="Script" uid="uid://3pw6gbv3qm7v" path="res://modules/UI/start_menu/start_menu_state.gd" id="2_sutdh"]
@@ -20,30 +19,21 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 anti_aliasing = false
 
-[node name="start_root" type="Control" unique_id=861949142]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="start_menu_controller" type="LimboHSM" parent="." unique_id=2136663043]
+[node name="start_menu_controller" type="LimboHSM" unique_id=2136663043]
 script = ExtResource("2_72xql")
 
-[node name="start_menu_state" type="LimboState" parent="start_menu_controller" unique_id=1798239909]
+[node name="start_menu_state" type="LimboState" parent="." unique_id=1798239909]
 script = ExtResource("2_sutdh")
 
-[node name="start_menu" type="Control" parent="start_menu_controller/start_menu_state" unique_id=825406133]
+[node name="start_menu" type="Control" parent="start_menu_state" unique_id=825406133]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_riilq")
 
-[node name="PanelContainer" type="PanelContainer" parent="start_menu_controller/start_menu_state/start_menu" unique_id=1568974930]
+[node name="PanelContainer" type="PanelContainer" parent="start_menu_state/start_menu" unique_id=1568974930]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,30 +41,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer" unique_id=878217017]
+[node name="MarginContainer" type="MarginContainer" parent="start_menu_state/start_menu/PanelContainer" unique_id=878217017]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="menu_elements" type="VBoxContainer" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer" unique_id=68037385]
+[node name="menu_elements" type="VBoxContainer" parent="start_menu_state/start_menu/PanelContainer" unique_id=68037385]
 layout_mode = 2
 theme_override_constants/separation = 200
 alignment = 1
 
-[node name="game_title" type="Label" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements" unique_id=1967537971]
+[node name="game_title" type="Label" parent="start_menu_state/start_menu/PanelContainer/menu_elements" unique_id=1967537971]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "Debt & Debris"
 
-[node name="menu_btns" type="VBoxContainer" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements" unique_id=791665644]
+[node name="menu_btns" type="VBoxContainer" parent="start_menu_state/start_menu/PanelContainer/menu_elements" unique_id=791665644]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="new_game" type="Button" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=1506013165]
-unique_name_in_owner = true
+[node name="new_game" type="Button" parent="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=1506013165]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -83,7 +72,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "New Game"
 
-[node name="coninue" type="Button" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=1586862187]
+[node name="coninue" type="Button" parent="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=1586862187]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -92,7 +81,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Continue"
 
-[node name="extras" type="Button" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=1968187938]
+[node name="extras" type="Button" parent="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=1968187938]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -101,7 +90,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Extras"
 
-[node name="config" type="Button" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=770755858]
+[node name="config" type="Button" parent="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=770755858]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -110,8 +99,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Config"
 
-[node name="quit" type="Button" parent="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=2065570494]
-unique_name_in_owner = true
+[node name="quit" type="Button" parent="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns" unique_id=2065570494]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -120,18 +108,22 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Quit"
 
-[node name="extras_menu_state" type="LimboState" parent="start_menu_controller" unique_id=1773854645]
+[node name="extras_menu_state" type="LimboState" parent="." unique_id=1428672572]
 script = ExtResource("2_mj48n")
 
-[node name="extras_screen" parent="start_menu_controller/extras_menu_state" unique_id=1402250385 instance=ExtResource("3_mj48n")]
-mouse_filter = 2
+[node name="extras_screen" parent="extras_menu_state" unique_id=25676791 instance=ExtResource("3_mj48n")]
+visible = false
+metadata/_edit_use_anchors_ = true
 
-[node name="config_menu_state" type="LimboState" parent="start_menu_controller" unique_id=973107331]
+[node name="config_menu_state" type="LimboState" parent="." unique_id=973107331]
 script = ExtResource("6_sutdh")
 
-[node name="config_screen" parent="start_menu_controller/config_menu_state" unique_id=714661705 instance=ExtResource("2_ysrcj")]
+[node name="config_screen" parent="config_menu_state" unique_id=714661705 instance=ExtResource("2_ysrcj")]
 visible = false
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/extras" to="start_menu_controller/start_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
-[connection signal="pressed" from="start_menu_controller/start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/config" to="start_menu_controller/start_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
+[connection signal="pressed" from="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/new_game" to="start_menu_state" method="dispatch" binds= [&"GAMEPLAY"]]
+[connection signal="pressed" from="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/extras" to="start_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
+[connection signal="pressed" from="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/config" to="start_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
+[connection signal="pressed" from="start_menu_state/start_menu/PanelContainer/menu_elements/menu_btns/quit" to="." method="_on_quit_pressed"]

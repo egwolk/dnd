@@ -22,7 +22,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 asset_manager="*res://scripts/asset_manager.gd"
-scene_manager="*uid://cq6r5urk7aqey"
 
 [display]
 

@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://bpyaa6jxf2nc7"]
 
-[node name="game_root" type="Control" unique_id=229696610]
+[ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/elements/game/game_view_state.gd" id="1_prn37"]
+
+[node name="game_view_state" type="LimboState" unique_id=677545002]
+script = ExtResource("1_prn37")
+
+[node name="game_root" type="Control" parent="." unique_id=229696610]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -8,9 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="game" type="Node2D" parent="." unique_id=682245497]
-
-[node name="Label" type="Label" parent="game" unique_id=111519417]
+[node name="Label" type="Label" parent="game_root" unique_id=111519417]
+layout_mode = 0
 offset_left = 639.0
 offset_top = 330.0
 offset_right = 768.0

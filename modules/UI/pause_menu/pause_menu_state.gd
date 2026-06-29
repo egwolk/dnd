@@ -11,6 +11,6 @@ func _enter() -> void:
 func _exit() -> void:
 	pause_ui.visible = false
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		dispatch(&"UNPAUSE")
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_pressed("ui_cancel"):
+		dispatch(&"RESUME_GAME")
