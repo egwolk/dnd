@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cmvfr3w5grxuq" path="res://modules/UI/pause_menu/pause_menu_state.gd" id="2_bkm6i"]
 [ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="2_f6eus"]
 [ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="3_8uki6"]
+[ext_resource type="Script" uid="uid://cqmrb6qg7lnj6" path="res://modules/UI/pause_menu/pause_menu.gd" id="3_bkm6i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
 content_margin_left = 25.0
@@ -27,6 +28,15 @@ script = ExtResource("2_bkm6i")
 [node name="pause_menu" type="Control" parent="pause_menu_state" unique_id=2089690865]
 process_mode = 3
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_bkm6i")
+
+[node name="pause_bg" type="TextureRect" parent="pause_menu_state/pause_menu" unique_id=1438246504]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -96,4 +106,4 @@ text = "Quit"
 
 [connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/extras" to="pause_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
 [connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/config" to="pause_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
-[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/quit" to="pause_menu_state" method="dispatch" binds= [&"QUIT_TO_MAIN"]]
+[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/quit" to="pause_menu_state" method="_on_quit_pressed"]

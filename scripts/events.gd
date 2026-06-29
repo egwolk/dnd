@@ -1,0 +1,4 @@
+extends Node
+
+signal pause_background_captured(texture: ImageTexture)
+signal quit_to_main_requested

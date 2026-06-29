@@ -11,7 +11,5 @@ func _ready() -> void:
     add_transition( game_state, pause_state, &"PAUSE_GAME")
     add_transition( pause_state, game_state, &"RESUME_GAME")
     add_transition( pause_state, start_state, &"QUIT_TO_MAIN")
-
-    get_tree().paused = false
     initialize(root_node)
     set_active(true)

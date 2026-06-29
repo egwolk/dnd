@@ -22,6 +22,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 asset_manager="*res://scripts/asset_manager.gd"
+Events="*uid://ddj7nfxnfbaj4"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 

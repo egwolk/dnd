@@ -14,3 +14,7 @@ func _exit() -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		dispatch(&"RESUME_GAME")
+
+func _on_quit_pressed() -> void:
+	Events.quit_to_main_requested.emit()
+	dispatch( &"QUIT_TO_MAIN" )
