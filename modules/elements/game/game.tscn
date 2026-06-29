@@ -13,6 +13,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="game" type="VideoStreamPlayer" parent="game_root" unique_id=1798460464]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+loop = true
+
 [node name="Label" type="Label" parent="game_root" unique_id=111519417]
 layout_mode = 0
 offset_left = 639.0
@@ -22,3 +31,5 @@ offset_bottom = 377.66666
 text = "GAMEPLAY HERE
 WOWWW"
 horizontal_alignment = 1
+
+[connection signal="entered" from="." to="game_root/game" method="play"]

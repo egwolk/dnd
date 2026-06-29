@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://cmvfr3w5grxuq" path="res://modules/UI/pause_menu/pause_menu_state.gd" id="2_bkm6i"]
 [ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="2_f6eus"]
 [ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="3_8uki6"]
-[ext_resource type="Script" uid="uid://cbija5sjsbkd0" path="res://modules/UI/extras_submenu_menu/extras_menu_state.gd" id="4_re1nv"]
-[ext_resource type="Script" uid="uid://dgdv2an2p8w5y" path="res://modules/UI/config_submenu_menu/config_menu_state.gd" id="6_565ox"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
 content_margin_left = 25.0
@@ -91,20 +89,9 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
 text = "Quit"
 
-[node name="extras_menu_state" type="LimboState" parent="." unique_id=530508125]
-script = ExtResource("4_re1nv")
+[node name="extras_menu_state" parent="." unique_id=118076578 instance=ExtResource("2_f6eus")]
 
-[node name="extras_screen" parent="extras_menu_state" unique_id=825406133 instance=ExtResource("2_f6eus")]
-visible = false
-metadata/_edit_use_anchors_ = true
-
-[node name="config_menu_state" type="LimboState" parent="." unique_id=753303079]
-script = ExtResource("6_565ox")
-
-[node name="config_screen" parent="config_menu_state" unique_id=1675153174 instance=ExtResource("3_8uki6")]
-visible = false
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+[node name="config_menu_state" parent="." unique_id=1474082704 instance=ExtResource("3_8uki6")]
 
 [connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/extras" to="pause_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
 [connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/config" to="pause_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
