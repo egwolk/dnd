@@ -16,5 +16,5 @@ func _unhandled_input(_event: InputEvent) -> void:
 		dispatch(&"RESUME_GAME")
 
 func _on_quit_pressed() -> void:
-	Events.quit_to_main_requested.emit()
-	dispatch( &"QUIT_TO_MAIN" )
+	get_tree().paused = false
+	SceneManager.goto_scene("res://modules/UI/start_menu/start_menu.tscn")

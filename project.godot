@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 asset_manager="*res://scripts/asset_manager.gd"
 Events="*uid://ddj7nfxnfbaj4"
+SceneManager="*uid://cq6r5urk7aqey"
 
 [debug]
 

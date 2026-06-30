@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://u5ste4no8nxa"]
+
+[ext_resource type="Script" uid="uid://i6bb6ms1qqjh" path="res://modules/UI/game_view/pause_menu/pause_controller.gd" id="1_1tjc1"]
+[ext_resource type="PackedScene" uid="uid://bpyaa6jxf2nc7" path="res://modules/elements/game/game.tscn" id="1_dxauo"]
+[ext_resource type="Script" uid="uid://b505fitlpmmid" path="res://modules/UI/game_view/game_view_controller.gd" id="1_vu8yj"]
+[ext_resource type="Script" uid="uid://cmvfr3w5grxuq" path="res://modules/UI/game_view/pause_menu/pause_menu_state.gd" id="2_bkm6i"]
+[ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="2_f6eus"]
+[ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/UI/game_view/game_view_state.gd" id="2_ycmxv"]
+[ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="3_8uki6"]
+[ext_resource type="Script" uid="uid://cqmrb6qg7lnj6" path="res://modules/UI/game_view/pause_menu/pause_menu.gd" id="3_bkm6i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="game_view" type="Control" unique_id=182202977]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="game_view_controller" type="LimboHSM" parent="." unique_id=161258809]
+script = ExtResource("1_vu8yj")
+
+[node name="game_view_state" type="LimboState" parent="game_view_controller" unique_id=1901250574]
+script = ExtResource("2_ycmxv")
+
+[node name="game_scene" parent="game_view_controller/game_view_state" unique_id=677545002 instance=ExtResource("1_dxauo")]
+
+[node name="pause_controller" type="LimboHSM" parent="game_view_controller" unique_id=147246019]
+process_mode = 3
+script = ExtResource("1_1tjc1")
+
+[node name="pause_menu_state" type="LimboState" parent="game_view_controller/pause_controller" unique_id=2128550944]
+script = ExtResource("2_bkm6i")
+
+[node name="pause_menu" type="Control" parent="game_view_controller/pause_controller/pause_menu_state" unique_id=2089690865]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_bkm6i")
+
+[node name="pause_bg" type="TextureRect" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu" unique_id=1438246504]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu" unique_id=1568974930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer" unique_id=878217017]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="elements" type="VBoxContainer" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer" unique_id=68037385]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="title" type="Label" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements" unique_id=1967537971]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Pause Menu"
+
+[node name="menu_btns" type="VBoxContainer" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements" unique_id=791665644]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="extras" type="Button" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=1968187938]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "Extras"
+
+[node name="config" type="Button" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=770755858]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "Config"
+
+[node name="quit" type="Button" parent="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=2065570494]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q63jl")
+text = "Quit"
+
+[node name="extras_menu_state" parent="game_view_controller/pause_controller" unique_id=118076578 instance=ExtResource("2_f6eus")]
+
+[node name="config_menu_state" parent="game_view_controller/pause_controller" unique_id=1474082704 instance=ExtResource("3_8uki6")]
+
+[connection signal="pressed" from="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/extras" to="game_view_controller/pause_controller/pause_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
+[connection signal="pressed" from="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/config" to="game_view_controller/pause_controller/pause_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
+[connection signal="pressed" from="game_view_controller/pause_controller/pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/quit" to="game_view_controller/pause_controller/pause_menu_state" method="_on_quit_pressed"]

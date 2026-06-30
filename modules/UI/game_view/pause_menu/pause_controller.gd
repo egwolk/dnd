@@ -13,7 +13,8 @@ func _enter() -> void:
 	get_tree().paused = true
 
 func _exit() -> void:
-	get_tree().paused =  false
+	if is_inside_tree():
+		get_tree().paused =  false
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):

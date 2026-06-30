@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://ct8n7ck26t4nw"]
 
-[ext_resource type="Script" uid="uid://c7fdm3bnnfmlc" path="res://modules/main/main_view_controller.gd" id="2_qtwxo"]
-[ext_resource type="PackedScene" uid="uid://bpytggwtypucg" path="res://modules/UI/start_menu/start_menu.tscn" id="3_dm0cy"]
-[ext_resource type="PackedScene" uid="uid://bpyaa6jxf2nc7" path="res://modules/elements/game/game.tscn" id="3_qknb0"]
-[ext_resource type="PackedScene" uid="uid://u5ste4no8nxa" path="res://modules/UI/pause_menu/pause_menu.tscn" id="4_qknb0"]
+[ext_resource type="Script" uid="uid://bf215743m58ib" path="res://modules/main/main.gd" id="1_374gq"]
 
 [node name="main" type="Node" unique_id=1818043722]
+script = ExtResource("1_374gq")
 
-[node name="main_view_controller" type="LimboHSM" parent="." unique_id=2099346770]
-script = ExtResource("2_qtwxo")
-
-[node name="start_menu_controller" parent="main_view_controller" unique_id=861949142 instance=ExtResource("3_dm0cy")]
-
-[node name="game_view_state" parent="main_view_controller" unique_id=677545002 instance=ExtResource("3_qknb0")]
-
-[node name="pause_controller" parent="main_view_controller" unique_id=147246019 instance=ExtResource("4_qknb0")]
+[node name="current_scene" type="Control" parent="." unique_id=1422509578]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
