@@ -78,5 +78,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_31nab")
 text = "Lose Test
 "
 
-[connection signal="pressed" from="game_scene/btns/win_test" to="." method="dispatch" binds= [&"WIN_SELECTED"]]
-[connection signal="pressed" from="game_scene/btns/lose_test" to="." method="dispatch" binds= [&"LOSE_SELECTED"]]
+[connection signal="pressed" from="game_scene/btns/win_test" to="." method="_on_win_test_pressed"]
+[connection signal="pressed" from="game_scene/btns/lose_test" to="." method="_on_lose_test_pressed"]

@@ -16,6 +16,16 @@ func  _unhandled_input(_event: InputEvent) -> void:
 		frozen_bg()
 		dispatch( &"PAUSE_GAME" )
 
+func _on_win_test_pressed() -> void:
+	frozen_bg()
+	dispatch(&"WIN_SELECTED")
+
+
+func _on_lose_test_pressed() -> void:
+	frozen_bg()
+	dispatch(&"LOSE_SELECTED")
+
+
 func frozen_bg() -> void:
 	var img = get_viewport().get_texture().get_image()
 	var tex = ImageTexture.create_from_image(img)
