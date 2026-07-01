@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://v5yv412sgad1"]
+
+[ext_resource type="Script" uid="uid://dypmsgnb57rwu" path="res://modules/UI/win_screen/win_view_state.gd" id="1_sbmbi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcbhw"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="win_view_state" type="LimboState" unique_id=1427619107]
+process_mode = 3
+script = ExtResource("1_sbmbi")
+
+[node name="win_screen" type="Control" parent="." unique_id=1406392502]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="win_screen" unique_id=378353028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="win_screen/PanelContainer" unique_id=1312833253]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="win_screen/PanelContainer/MarginContainer" unique_id=642854813]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="title" type="Label" parent="win_screen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1673509769]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "YOU WIN"
+vertical_alignment = 1
+
+[node name="btns" type="HBoxContainer" parent="win_screen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1937225693]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 25
+
+[node name="continue" type="Button" parent="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns" unique_id=514380934]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rcbhw")
+text = "Continue"
+
+[node name="quit" type="Button" parent="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns" unique_id=284544977]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rcbhw")
+text = "Quit"
+
+[connection signal="pressed" from="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns/quit" to="." method="_on_quit_pressed"]

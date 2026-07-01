@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://bpyaa6jxf2nc7"]
 
+[ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/UI/game_view/game_view_state.gd" id="1_prn37"]
 [ext_resource type="VideoStream" uid="uid://6ads4q3g7urs" path="res://assets/private/tempFile-forTesting[DELETE LATER].ogv" id="2_prn37"]
 
-[node name="game_scene" type="Control" unique_id=229696610]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31nab"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="game_view_state" type="LimboState" unique_id=89500966]
+script = ExtResource("1_prn37")
+
+[node name="game_scene" type="Control" parent="." unique_id=229696610]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="game" type="VideoStreamPlayer" parent="." unique_id=1798460464]
+[node name="game" type="VideoStreamPlayer" parent="game_scene" unique_id=1798460464]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +37,7 @@ stream = ExtResource("2_prn37")
 autoplay = true
 loop = true
 
-[node name="Label" type="Label" parent="." unique_id=111519417]
+[node name="Label" type="Label" parent="game_scene" unique_id=111519417]
 layout_mode = 0
 offset_left = 639.0
 offset_top = 330.0
@@ -30,3 +46,37 @@ offset_bottom = 377.66666
 text = "GAMEPLAY HERE
 WOWWW"
 horizontal_alignment = 1
+
+[node name="btns" type="HBoxContainer" parent="game_scene" unique_id=276334907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="win_test" type="Button" parent="game_scene/btns" unique_id=467913564]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_31nab")
+text = "Win Test"
+
+[node name="lose_test" type="Button" parent="game_scene/btns" unique_id=1237206503]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_31nab")
+text = "Lose Test
+"
+
+[connection signal="pressed" from="game_scene/btns/win_test" to="." method="dispatch" binds= [&"WIN_SELECTED"]]
+[connection signal="pressed" from="game_scene/btns/lose_test" to="." method="dispatch" binds= [&"LOSE_SELECTED"]]

@@ -6,8 +6,9 @@
 [ext_resource type="Script" uid="uid://udbiwgj07e8a" path="res://modules/UI/game_view/game_view.gd" id="1_ycmxv"]
 [ext_resource type="Script" uid="uid://cmvfr3w5grxuq" path="res://modules/UI/pause_menu/pause_menu_state.gd" id="2_bkm6i"]
 [ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="2_f6eus"]
-[ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/UI/game_view/game_view_state.gd" id="2_ycmxv"]
 [ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="3_8uki6"]
+[ext_resource type="PackedScene" uid="uid://v5yv412sgad1" path="res://modules/UI/win_screen/win_screen.tscn" id="10_car36"]
+[ext_resource type="PackedScene" uid="uid://cvg3bur7nmbd7" path="res://modules/UI/lose_screen/lose_screen.tscn" id="12_h7oml"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q63jl"]
 content_margin_left = 25.0
@@ -33,10 +34,7 @@ script = ExtResource("1_ycmxv")
 [node name="game_view_controller" type="LimboHSM" parent="." unique_id=161258809]
 script = ExtResource("1_vu8yj")
 
-[node name="game_view_state" type="LimboState" parent="game_view_controller" unique_id=1901250574]
-script = ExtResource("2_ycmxv")
-
-[node name="game_scene" parent="game_view_controller/game_view_state" unique_id=677545002 instance=ExtResource("1_dxauo")]
+[node name="game_view_state" parent="game_view_controller" unique_id=89500966 instance=ExtResource("1_dxauo")]
 
 [node name="pause_controller" type="LimboHSM" parent="game_view_controller" unique_id=147246019]
 process_mode = 3
@@ -114,6 +112,10 @@ text = "Quit"
 [node name="extras_menu_state" parent="game_view_controller/pause_controller" unique_id=118076578 instance=ExtResource("2_f6eus")]
 
 [node name="config_menu_state" parent="game_view_controller/pause_controller" unique_id=1474082704 instance=ExtResource("3_8uki6")]
+
+[node name="win_view_state" parent="game_view_controller" unique_id=1427619107 instance=ExtResource("10_car36")]
+
+[node name="lose_view_state" parent="game_view_controller" unique_id=612363975 instance=ExtResource("12_h7oml")]
 
 [node name="pause_bg" type="TextureRect" parent="." unique_id=1438246504]
 layout_mode = 1

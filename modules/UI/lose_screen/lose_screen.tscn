@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cvg3bur7nmbd7"]
+
+[ext_resource type="Script" uid="uid://dy0l8r3uuaxj3" path="res://modules/UI/lose_screen/lose_view_state.gd" id="1_fdehi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpf2k"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="lose_view_state" type="LimboState" unique_id=612363975]
+process_mode = 3
+script = ExtResource("1_fdehi")
+
+[node name="lose_screen" type="Control" parent="." unique_id=1466926242]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="lose_screen" unique_id=757415159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="lose_screen/PanelContainer" unique_id=1348223833]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="lose_screen/PanelContainer/MarginContainer" unique_id=1031498180]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="title" type="Label" parent="lose_screen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1454602930]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "YOU LOSE"
+vertical_alignment = 1
+
+[node name="btns" type="HBoxContainer" parent="lose_screen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1193317230]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 25
+
+[node name="restart" type="Button" parent="lose_screen/PanelContainer/MarginContainer/VBoxContainer/btns" unique_id=1052494171]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_cpf2k")
+text = "Restart"
+
+[node name="quit" type="Button" parent="lose_screen/PanelContainer/MarginContainer/VBoxContainer/btns" unique_id=233247051]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_cpf2k")
+text = "Quit"
+
+[connection signal="pressed" from="lose_screen/PanelContainer/MarginContainer/VBoxContainer/btns/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="lose_screen/PanelContainer/MarginContainer/VBoxContainer/btns/quit" to="." method="_on_quit_pressed"]
