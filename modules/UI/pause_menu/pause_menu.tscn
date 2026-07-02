@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bfepjewv8px5t"]
+
+[ext_resource type="Script" uid="uid://i6bb6ms1qqjh" path="res://modules/UI/pause_menu/pause_controller.gd" id="1_1tjc1"]
+[ext_resource type="Script" uid="uid://cmvfr3w5grxuq" path="res://modules/UI/pause_menu/pause_menu_state.gd" id="2_bkm6i"]
+[ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="3_bfhvh"]
+[ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="4_re1nv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_565ox"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="pause_controller" type="LimboHSM" unique_id=1240678222]
+process_mode = 3
+script = ExtResource("1_1tjc1")
+
+[node name="pause_menu_state" type="LimboState" parent="." unique_id=59970248]
+script = ExtResource("2_bkm6i")
+
+[node name="pause_menu" type="Control" parent="pause_menu_state" unique_id=1665939149]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="pause_menu_state/pause_menu" unique_id=1296034939]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="pause_menu_state/pause_menu/PanelContainer" unique_id=505818326]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="elements" type="VBoxContainer" parent="pause_menu_state/pause_menu/PanelContainer" unique_id=2131521419]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="title" type="Label" parent="pause_menu_state/pause_menu/PanelContainer/elements" unique_id=1652059896]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Pause Menu"
+
+[node name="menu_btns" type="VBoxContainer" parent="pause_menu_state/pause_menu/PanelContainer/elements" unique_id=675104983]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="extras" type="Button" parent="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=1220813102]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_565ox")
+text = "Extras"
+
+[node name="config" type="Button" parent="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=1134708669]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_565ox")
+text = "Config"
+
+[node name="quit" type="Button" parent="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns" unique_id=657986245]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_565ox")
+text = "Quit"
+
+[node name="extras_menu_state" parent="." unique_id=118076578 instance=ExtResource("3_bfhvh")]
+
+[node name="config_menu_state" parent="." unique_id=1474082704 instance=ExtResource("4_re1nv")]
+
+[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/extras" to="pause_menu_state" method="dispatch" binds= [&"EXTRAS_SELECTED"]]
+[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/config" to="pause_menu_state" method="dispatch" binds= [&"CONFIG_SELECTED"]]
+[connection signal="pressed" from="pause_menu_state/pause_menu/PanelContainer/elements/menu_btns/quit" to="pause_menu_state" method="_on_quit_pressed"]
