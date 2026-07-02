@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/UI/game_view/game_view_state.gd" id="1_prn37"]
 [ext_resource type="Texture2D" uid="uid://c7d6xkhqjx1lo" path="res://assets/public/sample_sprite.png" id="2_prn37"]
 [ext_resource type="AudioStream" uid="uid://cunbyrr84cl6v" path="res://assets/public/test_music.mp3" id="3_ebt00"]
+[ext_resource type="Script" uid="uid://d2kv8g4bjij26" path="res://modules/elements/test_sprite/test_sprite.gd" id="3_pgpji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebt00"]
 atlas = ExtResource("2_prn37")
@@ -97,6 +98,26 @@ position = Vector2(960, 900)
 scale = Vector2(6.61, 6.61)
 sprite_frames = SubResource("SpriteFrames_31nab")
 autoplay = "default"
+script = ExtResource("3_pgpji")
+
+[node name="state_change_test" type="Button" parent="game_scene" unique_id=2073584326]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1135.0
+offset_top = 854.75
+offset_right = -485.0
+offset_bottom = -133.24988
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_31nab")
+text = "change state"
 
 [node name="Label" type="Label" parent="game_scene" unique_id=111519417]
 layout_mode = 0
@@ -113,6 +134,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 640.0
+offset_top = 540.0
+offset_right = -655.0
+offset_bottom = -448.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -144,5 +169,6 @@ stream = ExtResource("3_ebt00")
 autoplay = true
 parameters/looping = false
 
+[connection signal="pressed" from="game_scene/state_change_test" to="game_scene/AnimatedSprite2D" method="_on_state_change_test_pressed"]
 [connection signal="pressed" from="game_scene/btns/win_test" to="." method="_on_win_test_pressed"]
 [connection signal="pressed" from="game_scene/btns/lose_test" to="." method="_on_lose_test_pressed"]
