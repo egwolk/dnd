@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/UI/game_view/game_view_state.gd" id="1_prn37"]
 [ext_resource type="Texture2D" uid="uid://c7d6xkhqjx1lo" path="res://assets/public/sample_sprite.png" id="2_prn37"]
+[ext_resource type="AudioStream" uid="uid://cunbyrr84cl6v" path="res://assets/public/test_music.mp3" id="3_ebt00"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebt00"]
 atlas = ExtResource("2_prn37")
@@ -137,6 +138,11 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_31nab")
 text = "Lose Test
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="game_scene" unique_id=1183088241]
+stream = ExtResource("3_ebt00")
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="game_scene/btns/win_test" to="." method="_on_win_test_pressed"]
 [connection signal="pressed" from="game_scene/btns/lose_test" to="." method="_on_lose_test_pressed"]
