@@ -62,6 +62,7 @@ WOWWW"
 horizontal_alignment = 1
 
 [node name="level_sample" type="Label" parent="game_scene" unique_id=808476455]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,7 +74,6 @@ offset_bottom = -264.9167
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
-text = "LEVEL: 1"
 horizontal_alignment = 1
 
 [node name="btns" type="HBoxContainer" parent="game_scene" unique_id=276334907]
@@ -118,4 +118,5 @@ parameters/looping = false
 
 [connection signal="pressed" from="game_scene/state_change_test" to="game_scene/test_player" method="_on_state_change_test_pressed"]
 [connection signal="pressed" from="game_scene/btns/win_test" to="." method="_on_win_test_pressed"]
+[connection signal="pressed" from="game_scene/btns/win_test" to="game_scene/test_player" method="_on_win_test_pressed"]
 [connection signal="pressed" from="game_scene/btns/lose_test" to="." method="_on_lose_test_pressed"]

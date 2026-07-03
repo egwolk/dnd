@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c7d6xkhqjx1lo" path="res://assets/public/sample_sprite.png" id="1_ksw7p"]
 [ext_resource type="Script" uid="uid://6h8cgqpsiaee" path="res://modules/elements/game/test_player.gd" id="2_n4cdn"]
+[ext_resource type="Script" uid="uid://d2kv8g4bjij26" path="res://modules/elements/test_sprite/test_sprite.gd" id="3_n4cdn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebt00"]
 atlas = ExtResource("1_ksw7p")
@@ -67,9 +68,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_2oh64"]
+script = ExtResource("3_n4cdn")
+metadata/_custom_type_script = "uid://d2kv8g4bjij26"
+
 [node name="test_player" type="AnimatedSprite2D" unique_id=1936438655]
 texture_filter = 1
 scale = Vector2(6.61, 6.61)
 sprite_frames = SubResource("SpriteFrames_31nab")
 autoplay = "default"
 script = ExtResource("2_n4cdn")
+player_res = SubResource("Resource_2oh64")

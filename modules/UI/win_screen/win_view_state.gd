@@ -1,4 +1,5 @@
-class_name win_view_state extends LimboState
+class_name win_view_state 
+extends LimboState
 
 @onready var win_ui = $win_screen
 
@@ -15,9 +16,11 @@ func _exit() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
+	Events.pause_background_cleared.emit()
 	SceneManager.goto_scene("res://modules/UI/start_menu/start_menu.tscn")
 
 
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
-	SceneManager.goto_scene(SceneManager.current_scene_instance.scene_file_path)
+	Events.pause_background_cleared.emit()
+	dispatch(&"RESUME_GAME")

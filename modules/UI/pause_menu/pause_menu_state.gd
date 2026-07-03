@@ -18,4 +18,5 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
+	Events.pause_background_cleared.emit()
 	SceneManager.goto_scene("res://modules/UI/start_menu/start_menu.tscn")
