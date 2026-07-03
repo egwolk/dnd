@@ -1,73 +1,9 @@
 [gd_scene format=3 uid="uid://bpyaa6jxf2nc7"]
 
 [ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/UI/game_view/game_view_state.gd" id="1_prn37"]
-[ext_resource type="Texture2D" uid="uid://c7d6xkhqjx1lo" path="res://assets/public/sample_sprite.png" id="2_prn37"]
+[ext_resource type="PackedScene" uid="uid://c0gdfmjmy3b0x" path="res://modules/elements/test_sprite/test_player.tscn" id="2_ebt00"]
 [ext_resource type="AudioStream" uid="uid://cunbyrr84cl6v" path="res://assets/public/test_music.mp3" id="3_ebt00"]
-[ext_resource type="Script" uid="uid://d2kv8g4bjij26" path="res://modules/elements/test_sprite/test_sprite.gd" id="3_pgpji"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebt00"]
-atlas = ExtResource("2_prn37")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgpji"]
-atlas = ExtResource("2_prn37")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o60nd"]
-atlas = ExtResource("2_prn37")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_37j7e"]
-atlas = ExtResource("2_prn37")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8x2a"]
-atlas = ExtResource("2_prn37")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x5g3u"]
-atlas = ExtResource("2_prn37")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_stkhj"]
-atlas = ExtResource("2_prn37")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hn20h"]
-atlas = ExtResource("2_prn37")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_31nab"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebt00")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pgpji")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o60nd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37j7e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f8x2a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x5g3u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_stkhj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hn20h")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Resource" uid="uid://cx86ngvrm8456" path="res://modules/elements/test_sprite/test_player.tres" id="3_pgpji"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31nab"]
 content_margin_left = 25.0
@@ -92,13 +28,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="game_scene" unique_id=1042830977]
-texture_filter = 1
+[node name="test_player" parent="game_scene" unique_id=1936438655 instance=ExtResource("2_ebt00")]
 position = Vector2(960, 900)
-scale = Vector2(6.61, 6.61)
-sprite_frames = SubResource("SpriteFrames_31nab")
-autoplay = "default"
-script = ExtResource("3_pgpji")
+player_res = ExtResource("3_pgpji")
 
 [node name="state_change_test" type="Button" parent="game_scene" unique_id=2073584326]
 custom_minimum_size = Vector2(300, 0)
@@ -127,6 +59,21 @@ offset_right = 768.0
 offset_bottom = 377.66666
 text = "GAMEPLAY HERE
 WOWWW"
+horizontal_alignment = 1
+
+[node name="level_sample" type="Label" parent="game_scene" unique_id=808476455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 896.0
+offset_top = 776.0
+offset_right = -913.0
+offset_bottom = -264.9167
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "LEVEL: 1"
 horizontal_alignment = 1
 
 [node name="btns" type="HBoxContainer" parent="game_scene" unique_id=276334907]
@@ -169,6 +116,6 @@ stream = ExtResource("3_ebt00")
 autoplay = true
 parameters/looping = false
 
-[connection signal="pressed" from="game_scene/state_change_test" to="game_scene/AnimatedSprite2D" method="_on_state_change_test_pressed"]
+[connection signal="pressed" from="game_scene/state_change_test" to="game_scene/test_player" method="_on_state_change_test_pressed"]
 [connection signal="pressed" from="game_scene/btns/win_test" to="." method="_on_win_test_pressed"]
 [connection signal="pressed" from="game_scene/btns/lose_test" to="." method="_on_lose_test_pressed"]

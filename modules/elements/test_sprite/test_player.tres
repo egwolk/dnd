@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="test_sprite" format=3 uid="uid://cx86ngvrm8456"]
+
+[ext_resource type="Script" uid="uid://d2kv8g4bjij26" path="res://modules/elements/test_sprite/test_sprite.gd" id="1_h0rua"]
+
+[resource]
+script = ExtResource("1_h0rua")
+color = Color(1, 1, 1, 1)
+level = 1
+metadata/_custom_type_script = "uid://d2kv8g4bjij26"
