@@ -7,10 +7,13 @@ func _setup() -> void:
 
 func _enter() -> void:
     map_ui.visible = true
+    get_tree().paused = true
 
 func _exit() -> void:
     map_ui.visible = false
 
 func _unhandled_input(_event: InputEvent) -> void:
     if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("m_pressed"):
+        get_tree().paused = false
+        Events.pause_background_cleared.emit()
         dispatch(&"RESUME_GAME")

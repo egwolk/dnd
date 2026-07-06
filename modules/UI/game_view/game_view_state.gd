@@ -16,6 +16,7 @@ func  _unhandled_input(_event: InputEvent) -> void:
 		frozen_bg()
 		dispatch( &"PAUSE_GAME" )
 	if Input.is_action_just_pressed("m_pressed"):
+		frozen_bg()
 		dispatch(&"MAP_SELECTED")
 
 func _on_win_test_pressed() -> void:

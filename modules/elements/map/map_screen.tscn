@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7d7uw5cbdo1w" path="res://modules/elements/map/map_view_state.gd" id="1_5irdg"]
 
 [node name="map_view_state" type="LimboState" unique_id=852265533]
+process_mode = 3
 script = ExtResource("1_5irdg")
 
 [node name="map_screen" type="Control" parent="." unique_id=2027865605]

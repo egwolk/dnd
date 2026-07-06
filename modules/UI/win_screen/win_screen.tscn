@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://v5yv412sgad1"]
 
 [ext_resource type="Script" uid="uid://dypmsgnb57rwu" path="res://modules/UI/win_screen/win_view_state.gd" id="1_sbmbi"]
-[ext_resource type="Resource" uid="uid://cx86ngvrm8456" path="res://modules/elements/test_sprite/test_player.tres" id="2_2uew0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcbhw"]
 content_margin_left = 25.0
@@ -18,7 +17,6 @@ anti_aliasing = false
 [node name="win_view_state" type="LimboState" unique_id=1427619107]
 process_mode = 3
 script = ExtResource("1_sbmbi")
-player_res = ExtResource("2_2uew0")
 
 [node name="win_screen" type="Control" parent="." unique_id=1406392502]
 layout_mode = 3
