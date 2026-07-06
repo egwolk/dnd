@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://blaj1ou31lnc0"]
+
+[ext_resource type="Script" uid="uid://b7d7uw5cbdo1w" path="res://modules/elements/map/map_view_state.gd" id="1_5irdg"]
+
+[node name="map_view_state" type="LimboState" unique_id=852265533]
+script = ExtResource("1_5irdg")
+
+[node name="map_screen" type="Control" parent="." unique_id=2027865605]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="map_screen" unique_id=1315907502]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="map_screen/PanelContainer" unique_id=818422395]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="elements" type="VBoxContainer" parent="map_screen/PanelContainer/MarginContainer" unique_id=1213394658]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="title" type="Label" parent="map_screen/PanelContainer/MarginContainer/elements" unique_id=201013223]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "MAP SCREEN"

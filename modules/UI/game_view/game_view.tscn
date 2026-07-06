@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b505fitlpmmid" path="res://modules/UI/game_view/game_view_controller.gd" id="1_vu8yj"]
 [ext_resource type="Script" uid="uid://udbiwgj07e8a" path="res://modules/UI/game_view/game_view.gd" id="1_ycmxv"]
 [ext_resource type="PackedScene" uid="uid://bfepjewv8px5t" path="res://modules/UI/pause_menu/pause_menu.tscn" id="4_dxauo"]
+[ext_resource type="PackedScene" uid="uid://blaj1ou31lnc0" path="res://modules/elements/map/map_screen.tscn" id="7_vu8yj"]
 [ext_resource type="PackedScene" uid="uid://v5yv412sgad1" path="res://modules/UI/win_screen/win_screen.tscn" id="10_car36"]
 [ext_resource type="PackedScene" uid="uid://cvg3bur7nmbd7" path="res://modules/UI/lose_screen/lose_screen.tscn" id="12_h7oml"]
 
@@ -26,6 +27,8 @@ script = ExtResource("1_vu8yj")
 [node name="win_view_state" parent="game_view_controller" unique_id=1427619107 instance=ExtResource("10_car36")]
 
 [node name="lose_view_state" parent="game_view_controller" unique_id=612363975 instance=ExtResource("12_h7oml")]
+
+[node name="map_view_state" parent="game_view_controller" unique_id=852265533 instance=ExtResource("7_vu8yj")]
 
 [node name="pause_bg" type="TextureRect" parent="." unique_id=1438246504]
 layout_mode = 1
