@@ -14,4 +14,4 @@ func _exit() -> void:
 
 
 func _on_new_game_pressed() -> void:
-	SceneManager.goto_scene("res://modules/UI/game_view/game_view.tscn")
+	SceneManager.goto_scene("res://modules/elements/run/run.tscn")

@@ -1,5 +1,4 @@
-
-class_name game_view_controller extends LimboHSM
+class_name run_view_controller extends LimboHSM
 
 @onready var root_node = $"."
 

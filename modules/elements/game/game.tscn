@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpyaa6jxf2nc7"]
 
-[ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/UI/game_view/game_view_state.gd" id="1_prn37"]
+[ext_resource type="Script" uid="uid://7cssy3ganedj" path="res://modules/elements/game/game_view_state.gd" id="1_prn37"]
 [ext_resource type="PackedScene" uid="uid://c0gdfmjmy3b0x" path="res://modules/elements/test_sprite/test_player.tscn" id="2_ebt00"]
 [ext_resource type="AudioStream" uid="uid://cunbyrr84cl6v" path="res://assets/public/test_music.mp3" id="3_ebt00"]
 [ext_resource type="Resource" uid="uid://cx86ngvrm8456" path="res://modules/elements/test_sprite/test_player.tres" id="3_pgpji"]

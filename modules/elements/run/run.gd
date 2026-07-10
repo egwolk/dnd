@@ -1,4 +1,4 @@
-class_name game_view extends Control
+class_name run extends Control
 
 func _ready() -> void:
 	Events.pause_background_captured.connect(_on_pause_background_captured)
