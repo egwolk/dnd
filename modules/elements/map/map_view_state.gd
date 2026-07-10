@@ -2,7 +2,10 @@ class_name map_view_state extends LimboState
 
 @onready var map_ui = $map_screen
 
-var can_dismiss: bool = false  
+var can_dismiss: bool = false:
+    set(value):
+        can_dismiss = value
+        _set_buttons_disabled(value)
 
 func _setup() -> void:
     map_ui.visible = false
@@ -13,6 +16,10 @@ func _enter() -> void:
 
 func _exit() -> void:
     map_ui.visible = false
+
+func _set_buttons_disabled(value: bool) -> void:
+    for button in get_tree().get_nodes_in_group("map_buttons"):
+        button.disabled = value
 
 func _unhandled_input(_event: InputEvent) -> void:
     if Input.is_action_just_pressed("ui_cancel"):
