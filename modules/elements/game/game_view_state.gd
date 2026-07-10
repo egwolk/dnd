@@ -1,6 +1,7 @@
 class_name game_view_state extends LimboState
 
 @onready var game_ui = $game_scene
+@onready var map_state = %map_view_state
 
 func _setup() -> void:
 	game_ui.visible = false
@@ -17,6 +18,7 @@ func  _unhandled_input(_event: InputEvent) -> void:
 		dispatch( &"PAUSE" )
 	if Input.is_action_just_pressed("m_pressed"):
 		frozen_bg()
+		map_state.can_dismiss = true
 		dispatch(&"MAP_SELECTED")
 
 func _on_win_test_pressed() -> void:

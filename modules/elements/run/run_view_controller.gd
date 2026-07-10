@@ -11,7 +11,9 @@ class_name run_view_controller extends LimboHSM
 func _ready() -> void:
 	add_transition( ANYSTATE, pause_state, &"PAUSE" )
 	add_transition( game_state, win_state, &"WIN_SELECTED" )
+	add_transition( win_state, game_state, &"CONTINUE_SELECTED" )
 	add_transition( game_state, lose_state, &"LOSE_SELECTED" )
+	add_transition( map_state, game_state, &"LEVEL_SELECTED" )
 	add_transition( game_state, map_state, &"MAP_SELECTED" )
 	add_event_handler( &"UNPAUSE", _on_unpause )
 	initialize(root_node)

@@ -23,4 +23,4 @@ func _on_quit_pressed() -> void:
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
 	Events.pause_background_cleared.emit()
-	dispatch(&"RESUME_GAME")
+	dispatch(&"CONTINUE_SELECTED")

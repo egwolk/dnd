@@ -39,3 +39,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "MAP SCREEN"
+
+[node name="Button" type="Button" parent="map_screen/PanelContainer/MarginContainer/elements" unique_id=1437458207]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "LEVEL SELECT"
+
+[connection signal="pressed" from="map_screen/PanelContainer/MarginContainer/elements/Button" to="." method="_on_button_pressed"]

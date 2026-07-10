@@ -29,3 +29,9 @@ func _unhandled_input(_event: InputEvent) -> void:
             dispatch(&"UNPAUSE")
         else:
             return
+
+func _on_button_pressed() -> void:
+    can_dismiss = true
+    get_tree().paused = false
+    Events.pause_background_cleared.emit()
+    dispatch( &"LEVEL_SELECTED" )
