@@ -9,10 +9,15 @@ class_name run_view_controller extends LimboHSM
 @onready var map_state = $map_view_state
 
 func _ready() -> void:
-	add_transition( game_state, pause_state, &"PAUSE_GAME" )
-	add_transition( ANYSTATE, game_state, &"RESUME_GAME" )
+	add_transition( ANYSTATE, pause_state, &"PAUSE" )
 	add_transition( game_state, win_state, &"WIN_SELECTED" )
 	add_transition( game_state, lose_state, &"LOSE_SELECTED" )
 	add_transition( game_state, map_state, &"MAP_SELECTED" )
+	add_event_handler( &"UNPAUSE", _on_unpause )
 	initialize(root_node)
 	set_active(true)
+
+
+func _on_unpause() -> bool:
+	change_active_state(get_previous_active_state())
+	return true

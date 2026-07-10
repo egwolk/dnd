@@ -2,6 +2,8 @@ class_name map_view_state extends LimboState
 
 @onready var map_ui = $map_screen
 
+var can_dismiss: bool = false  
+
 func _setup() -> void:
     map_ui.visible = false
 
@@ -14,6 +16,16 @@ func _exit() -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
     if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("m_pressed"):
-        get_tree().paused = false
-        Events.pause_background_cleared.emit()
-        dispatch(&"RESUME_GAME")
+        if can_dismiss:
+            get_tree().paused = false
+            Events.pause_background_cleared.emit()
+            dispatch(&"UNPAUSE")
+        else:
+            dispatch(&"PAUSE")
+    elif Input.is_action_just_pressed("m_pressed"):
+        if can_dismiss:
+            get_tree().paused = false
+            Events.pause_background_cleared.emit()
+            dispatch(&"UNPAUSE")
+        else:
+            return

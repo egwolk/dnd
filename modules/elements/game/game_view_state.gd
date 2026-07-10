@@ -14,7 +14,7 @@ func _exit() -> void:
 func  _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		frozen_bg()
-		dispatch( &"PAUSE_GAME" )
+		dispatch( &"PAUSE" )
 	if Input.is_action_just_pressed("m_pressed"):
 		frozen_bg()
 		dispatch(&"MAP_SELECTED")

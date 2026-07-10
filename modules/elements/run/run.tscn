@@ -20,6 +20,9 @@ script = ExtResource("1_nw5js")
 [node name="run_view_controller" type="LimboHSM" parent="." unique_id=161258809]
 script = ExtResource("2_7ywmc")
 
+[node name="map_view_state" parent="run_view_controller" unique_id=852265533 instance=ExtResource("7_k0pbh")]
+unique_name_in_owner = true
+
 [node name="game_view_state" parent="run_view_controller" unique_id=89500966 instance=ExtResource("3_ch363")]
 
 [node name="pause_controller" parent="run_view_controller" unique_id=1240678222 instance=ExtResource("4_3du0c")]
@@ -27,8 +30,6 @@ script = ExtResource("2_7ywmc")
 [node name="win_view_state" parent="run_view_controller" unique_id=1427619107 instance=ExtResource("5_0kdji")]
 
 [node name="lose_view_state" parent="run_view_controller" unique_id=612363975 instance=ExtResource("6_vrhw1")]
-
-[node name="map_view_state" parent="run_view_controller" unique_id=852265533 instance=ExtResource("7_k0pbh")]
 
 [node name="pause_bg" type="TextureRect" parent="." unique_id=1438246504]
 layout_mode = 1
