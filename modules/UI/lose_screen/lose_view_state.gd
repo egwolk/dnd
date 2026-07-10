@@ -12,9 +12,6 @@ func _enter() -> void:
 func _exit() -> void:
 	lose_ui.visible = false
 
-func _on_restart_pressed() -> void:
-	get_tree().paused = false
-	SceneManager.goto_scene(SceneManager.current_scene_instance.scene_file_path)
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
