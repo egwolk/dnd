@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dj5hgu48xsk3j"]
+
+[ext_resource type="Script" uid="uid://buejiqoud5pyp" path="res://modules/elements/map_node_shop/shop_view_state.gd" id="1_8bqop"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_les3s"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="shop_view_state" type="LimboState" unique_id=1942359272]
+script = ExtResource("1_8bqop")
+
+[node name="shop_view" type="Control" parent="." unique_id=1300550540]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="shop_view" unique_id=390516231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="shop_view/PanelContainer" unique_id=868652058]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="shop_view/PanelContainer/VBoxContainer" unique_id=990297632]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "SHOP NODE ROOM"
+horizontal_alignment = 1
+
+[node name="btns" type="HBoxContainer" parent="shop_view/PanelContainer/VBoxContainer" unique_id=1723227415]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="next_node" type="Button" parent="shop_view/PanelContainer/VBoxContainer/btns" unique_id=892654990]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_les3s")
+text = "NEXT NODE
+"
+
+[connection signal="pressed" from="shop_view/PanelContainer/VBoxContainer/btns/next_node" to="." method="_on_next_node_pressed"]

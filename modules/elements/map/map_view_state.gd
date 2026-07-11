@@ -37,8 +37,36 @@ func _unhandled_input(_event: InputEvent) -> void:
         else:
             return
 
-func _on_button_pressed() -> void:
+func _on_fishing_pressed() -> void:
     can_dismiss = true
     get_tree().paused = false
+    Events.continue_pressed.emit()
     Events.pause_background_cleared.emit()
-    dispatch( &"LEVEL_SELECTED" )
+    dispatch( &"FISHING_SELECTED" )
+
+func _on_shop_pressed() -> void:
+    can_dismiss = true
+    get_tree().paused = false
+    Events.continue_pressed.emit()
+    Events.pause_background_cleared.emit()
+    dispatch( &"SHOP_SELECTED" )
+
+func _on_event_pressed() -> void:
+    can_dismiss = true
+    get_tree().paused = false
+    Events.continue_pressed.emit()
+    Events.pause_background_cleared.emit()
+    dispatch( &"EVENT_SELECTED" )
+
+func _on_boss_pressed() -> void:
+    can_dismiss = true
+    get_tree().paused = false
+    Events.continue_pressed.emit()
+    Events.pause_background_cleared.emit()
+    dispatch( &"BOSS_SELECTED" )
+
+
+
+
+
+

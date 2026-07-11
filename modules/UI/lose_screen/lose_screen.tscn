@@ -19,6 +19,8 @@ process_mode = 3
 script = ExtResource("1_fdehi")
 
 [node name="lose_screen" type="Control" parent="." unique_id=1466926242]
+visible = false
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

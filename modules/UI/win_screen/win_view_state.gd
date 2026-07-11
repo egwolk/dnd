@@ -2,6 +2,9 @@ class_name win_view_state
 extends LimboState
 
 @onready var win_ui = $win_screen
+@onready var continue_button = %continue
+@onready var map_state = %map_view_state
+@onready var run_controller = %run_view_controller
 
 func _setup() -> void:
 	win_ui.visible = false
@@ -9,6 +12,9 @@ func _setup() -> void:
 func _enter() -> void:
 	win_ui.visible = true
 	get_tree().paused = true
+
+	var prev_state = run_controller.get_previous_active_state()
+	continue_button.visible = (prev_state != run_controller.boss_state)
 
 func _exit() -> void:
 	win_ui.visible = false
@@ -23,4 +29,5 @@ func _on_quit_pressed() -> void:
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
 	Events.pause_background_cleared.emit()
-	dispatch(&"CONTINUE_SELECTED")
+	map_state.can_dismiss = false
+	dispatch(&"MAP_SELECTED")

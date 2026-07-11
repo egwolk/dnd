@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dp0cb3otd5vmn"]
+
+[ext_resource type="Script" uid="uid://by0guvy64twr3" path="res://modules/elements/map_node_boss/boss_view_state.gd" id="1_h6cu0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6cu0"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="boss_view_state" type="LimboState" unique_id=1122078926]
+script = ExtResource("1_h6cu0")
+
+[node name="boss_view" type="Control" parent="." unique_id=1553837184]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="boss_view" unique_id=1987991364]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="boss_view/PanelContainer" unique_id=207555145]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="boss_view/PanelContainer/VBoxContainer" unique_id=1635012403]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "BOSS NODE ROOM "
+horizontal_alignment = 1
+
+[node name="btns" type="HBoxContainer" parent="boss_view/PanelContainer/VBoxContainer" unique_id=1960781090]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="lose_test" type="Button" parent="boss_view/PanelContainer/VBoxContainer/btns" unique_id=1059134415]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_h6cu0")
+text = "Lose Test
+"
+
+[node name="win_test" type="Button" parent="boss_view/PanelContainer/VBoxContainer/btns" unique_id=424090650]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_h6cu0")
+text = "Win Test"
+
+[connection signal="pressed" from="boss_view/PanelContainer/VBoxContainer/btns/lose_test" to="." method="_on_lose_test_pressed"]
+[connection signal="pressed" from="boss_view/PanelContainer/VBoxContainer/btns/win_test" to="." method="_on_win_test_pressed"]

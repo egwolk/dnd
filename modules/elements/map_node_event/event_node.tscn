@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://b5k2b8yd1k4tk"]
+
+[ext_resource type="Script" uid="uid://b5r01xqql1std" path="res://modules/elements/map_node_event/event_view_state.gd" id="1_44e5h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44e5h"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.3366076, 0.33660764, 0.33660752, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing = false
+
+[node name="event_view_state" type="LimboState" unique_id=160196238]
+script = ExtResource("1_44e5h")
+
+[node name="event_view" type="Control" parent="." unique_id=479320129]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="event_view" unique_id=1116991443]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="event_view/PanelContainer" unique_id=1702193059]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="event_view/PanelContainer/VBoxContainer" unique_id=924252839]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "EVENT NODE ROOM "
+horizontal_alignment = 1
+
+[node name="btns" type="HBoxContainer" parent="event_view/PanelContainer/VBoxContainer" unique_id=841522233]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="next_node" type="Button" parent="event_view/PanelContainer/VBoxContainer/btns" unique_id=1237626836]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_44e5h")
+text = "NEXT_NODE"
+
+[connection signal="pressed" from="event_view/PanelContainer/VBoxContainer/btns/next_node" to="." method="_on_next_node_pressed"]

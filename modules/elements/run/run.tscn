@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://udbiwgj07e8a" path="res://modules/elements/run/run.gd" id="1_nw5js"]
 [ext_resource type="Script" uid="uid://b505fitlpmmid" path="res://modules/elements/run/run_view_controller.gd" id="2_7ywmc"]
-[ext_resource type="PackedScene" uid="uid://bpyaa6jxf2nc7" path="res://modules/elements/game/game.tscn" id="3_ch363"]
 [ext_resource type="PackedScene" uid="uid://bfepjewv8px5t" path="res://modules/UI/pause_menu/pause_menu.tscn" id="4_3du0c"]
 [ext_resource type="PackedScene" uid="uid://v5yv412sgad1" path="res://modules/UI/win_screen/win_screen.tscn" id="5_0kdji"]
 [ext_resource type="PackedScene" uid="uid://cvg3bur7nmbd7" path="res://modules/UI/lose_screen/lose_screen.tscn" id="6_vrhw1"]
+[ext_resource type="PackedScene" uid="uid://dp0cb3otd5vmn" path="res://modules/elements/map_node_boss/boss_node.tscn" id="7_e41gq"]
 [ext_resource type="PackedScene" uid="uid://blaj1ou31lnc0" path="res://modules/elements/map/map_screen.tscn" id="7_k0pbh"]
+[ext_resource type="PackedScene" uid="uid://dj5hgu48xsk3j" path="res://modules/elements/map_node_shop/shop_node.tscn" id="8_5aekx"]
+[ext_resource type="PackedScene" uid="uid://c0bnpsdhg6wkm" path="res://modules/elements/map_node_fishing/fishing_node.tscn" id="8_r81u6"]
+[ext_resource type="PackedScene" uid="uid://b5k2b8yd1k4tk" path="res://modules/elements/map_node_event/event_node.tscn" id="9_8wlpx"]
+[ext_resource type="PackedScene" uid="uid://c0gdfmjmy3b0x" path="res://modules/elements/test_sprite/test_player.tscn" id="11_dlggn"]
+[ext_resource type="AudioStream" uid="uid://cunbyrr84cl6v" path="res://assets/public/test_music.mp3" id="12_kuvgl"]
 
 [node name="run" type="Control" unique_id=182202977]
 layout_mode = 3
@@ -18,18 +23,25 @@ grow_vertical = 2
 script = ExtResource("1_nw5js")
 
 [node name="run_view_controller" type="LimboHSM" parent="." unique_id=161258809]
+unique_name_in_owner = true
 script = ExtResource("2_7ywmc")
 
 [node name="map_view_state" parent="run_view_controller" unique_id=852265533 instance=ExtResource("7_k0pbh")]
 unique_name_in_owner = true
-
-[node name="game_view_state" parent="run_view_controller" unique_id=89500966 instance=ExtResource("3_ch363")]
 
 [node name="pause_controller" parent="run_view_controller" unique_id=1240678222 instance=ExtResource("4_3du0c")]
 
 [node name="win_view_state" parent="run_view_controller" unique_id=1427619107 instance=ExtResource("5_0kdji")]
 
 [node name="lose_view_state" parent="run_view_controller" unique_id=612363975 instance=ExtResource("6_vrhw1")]
+
+[node name="fishing_view_state" parent="run_view_controller" unique_id=2111320928 instance=ExtResource("8_r81u6")]
+
+[node name="shop_view_state" parent="run_view_controller" unique_id=1942359272 instance=ExtResource("8_5aekx")]
+
+[node name="event_view_state" parent="run_view_controller" unique_id=160196238 instance=ExtResource("9_8wlpx")]
+
+[node name="boss_view_state" parent="run_view_controller" unique_id=1122078926 instance=ExtResource("7_e41gq")]
 
 [node name="pause_bg" type="TextureRect" parent="." unique_id=1438246504]
 layout_mode = 1
@@ -38,3 +50,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="test_player" parent="." unique_id=1936438655 instance=ExtResource("11_dlggn")]
+z_index = 2
+position = Vector2(394, 806)
+
+[node name="level_sample" type="Label" parent="." unique_id=1320329272]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 822.0
+offset_top = 30.0
+offset_right = 862.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 28
+
+[node name="tip" type="Label" parent="." unique_id=747128692]
+z_index = 2
+layout_mode = 0
+offset_left = 250.0
+offset_top = 686.0
+offset_right = 558.0
+offset_bottom = 709.0
+text = "press ← or → to test player state change"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=751590399]
+process_mode = 3
+stream = ExtResource("12_kuvgl")
+autoplay = true
+parameters/looping = true

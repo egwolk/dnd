@@ -7,6 +7,8 @@ process_mode = 3
 script = ExtResource("1_5irdg")
 
 [node name="map_screen" type="Control" parent="." unique_id=2027865605]
+visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,10 +42,34 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "MAP SCREEN"
 
-[node name="Button" type="Button" parent="map_screen/PanelContainer/MarginContainer/elements" unique_id=1437458207 groups=["map_buttons"]]
+[node name="btns" type="VBoxContainer" parent="map_screen/PanelContainer/MarginContainer/elements" unique_id=2124432607]
+layout_mode = 2
+
+[node name="fishing" type="Button" parent="map_screen/PanelContainer/MarginContainer/elements/btns" unique_id=1437458207 groups=["map_buttons"]]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-text = "LEVEL SELECT"
+text = "FISHING NODE"
 
-[connection signal="pressed" from="map_screen/PanelContainer/MarginContainer/elements/Button" to="." method="_on_button_pressed"]
+[node name="shop" type="Button" parent="map_screen/PanelContainer/MarginContainer/elements/btns" unique_id=1928699265 groups=["map_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "SHOP NODE"
+
+[node name="event" type="Button" parent="map_screen/PanelContainer/MarginContainer/elements/btns" unique_id=1361380220 groups=["map_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "EVENT  NODE"
+
+[node name="boss" type="Button" parent="map_screen/PanelContainer/MarginContainer/elements/btns" unique_id=358751034 groups=["map_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "BOSS NODE"
+
+[connection signal="pressed" from="map_screen/PanelContainer/MarginContainer/elements/btns/fishing" to="." method="_on_fishing_pressed"]
+[connection signal="pressed" from="map_screen/PanelContainer/MarginContainer/elements/btns/shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="map_screen/PanelContainer/MarginContainer/elements/btns/event" to="." method="_on_event_pressed"]
+[connection signal="pressed" from="map_screen/PanelContainer/MarginContainer/elements/btns/boss" to="." method="_on_boss_pressed"]

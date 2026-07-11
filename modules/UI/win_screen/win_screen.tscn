@@ -19,6 +19,8 @@ process_mode = 3
 script = ExtResource("1_sbmbi")
 
 [node name="win_screen" type="Control" parent="." unique_id=1406392502]
+visible = false
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,15 +61,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/separation = 25
 
-[node name="continue" type="Button" parent="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns" unique_id=514380934]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_rcbhw")
-text = "Continue"
-
 [node name="quit" type="Button" parent="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns" unique_id=284544977]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -77,5 +70,16 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rcbhw")
 text = "Quit"
 
-[connection signal="pressed" from="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns/continue" to="." method="_on_continue_pressed"]
+[node name="continue" type="Button" parent="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns" unique_id=514380934]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rcbhw")
+text = "Continue"
+
 [connection signal="pressed" from="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="win_screen/PanelContainer/MarginContainer/VBoxContainer/btns/continue" to="." method="_on_continue_pressed"]
