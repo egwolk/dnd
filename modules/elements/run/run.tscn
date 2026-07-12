@@ -29,12 +29,6 @@ script = ExtResource("2_7ywmc")
 [node name="map_view_state" parent="run_view_controller" unique_id=852265533 instance=ExtResource("7_k0pbh")]
 unique_name_in_owner = true
 
-[node name="pause_controller" parent="run_view_controller" unique_id=1240678222 instance=ExtResource("4_3du0c")]
-
-[node name="win_view_state" parent="run_view_controller" unique_id=1427619107 instance=ExtResource("5_0kdji")]
-
-[node name="lose_view_state" parent="run_view_controller" unique_id=612363975 instance=ExtResource("6_vrhw1")]
-
 [node name="fishing_view_state" parent="run_view_controller" unique_id=2111320928 instance=ExtResource("8_r81u6")]
 
 [node name="shop_view_state" parent="run_view_controller" unique_id=1942359272 instance=ExtResource("8_5aekx")]
@@ -42,6 +36,12 @@ unique_name_in_owner = true
 [node name="event_view_state" parent="run_view_controller" unique_id=160196238 instance=ExtResource("9_8wlpx")]
 
 [node name="boss_view_state" parent="run_view_controller" unique_id=1122078926 instance=ExtResource("7_e41gq")]
+
+[node name="pause_controller" parent="run_view_controller" unique_id=1240678222 instance=ExtResource("4_3du0c")]
+
+[node name="win_view_state" parent="run_view_controller" unique_id=1427619107 instance=ExtResource("5_0kdji")]
+
+[node name="lose_view_state" parent="run_view_controller" unique_id=612363975 instance=ExtResource("6_vrhw1")]
 
 [node name="pause_bg" type="TextureRect" parent="." unique_id=1438246504]
 layout_mode = 1
