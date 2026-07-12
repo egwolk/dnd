@@ -23,7 +23,6 @@ func  _unhandled_input(_event: InputEvent) -> void:
 
 func _on_next_node_pressed() -> void:
     map_state.can_dismiss = false
-    Events.continue_pressed.emit()
     dispatch(&"MAP_SELECTED")
 
 func frozen_bg() -> void:

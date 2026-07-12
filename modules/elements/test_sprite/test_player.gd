@@ -5,7 +5,7 @@ class_name test_player extends AnimatedSprite2D
 
 func _ready() -> void:
 	%level_sample.text = "LEVEL: %s" % player_res.level
-	Events.continue_pressed.connect(level_up)
+	Events.map_node_pressed.connect(level_up)
 
 
 # func _on_state_change_test_pressed() -> void:
