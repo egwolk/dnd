@@ -8,8 +8,6 @@ func _ready() -> void:
 	Events.map_node_pressed.connect(level_up)
 
 
-# func _on_state_change_test_pressed() -> void:
-# 	modulate = player_res.change_color()
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
