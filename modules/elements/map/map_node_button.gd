@@ -13,22 +13,24 @@ const ICONS := {
 var available := false: set = set_available
 var step: MapNode: set = set_node
 
-func set_available(new_value: bool) -> void:
-	available = new_value
-
-	if available:
-		animation_player.play("highlight")
-	elif not step.selected:
-		animation_player.play("RESET")
-
-func refresh_highlight(skip_animation: bool = false) -> void:
+func _apply_available_visual(force_restart: bool = false, skip_animation: bool = false) -> void:
 	if step.selected:
 		return
-	animation_player.stop()
+
+	if force_restart:
+		animation_player.stop()
+
 	if available and not skip_animation:
 		animation_player.play("highlight")
-	elif not step.selected:
+	elif not available:
 		animation_player.play("RESET")
+
+func set_available(new_value: bool) -> void:
+	available = new_value
+	_apply_available_visual()
+
+func refresh_highlight(skip_animation: bool = false) -> void:
+	_apply_available_visual(true, skip_animation)
 
 func set_node(new_data: MapNode) -> void:
 	step = new_data
