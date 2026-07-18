@@ -55,10 +55,6 @@ func create_map() -> void:
 	await get_tree().process_frame
 	scroll_container.scroll_vertical = int(visuals.custom_minimum_size.y - scroll_container.size.y)
 
-func refresh_highlights(skip_animation: bool = false) -> void:
-	for map_node: MapNodeButton in steps.get_children():
-		map_node.refresh_highlight(skip_animation)
-
 func unlock_node(which_node: int = steps_taken) -> void:
 	for map_node: MapNodeButton in steps.get_children():
 		if map_node.step.row == which_node:

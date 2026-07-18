@@ -7,6 +7,7 @@ var can_dismiss: bool = false:
 		can_dismiss = value
 		_set_buttons_disabled(value)
 
+
 func _setup() -> void:
 	map_ui.visible = false
 	Events.selected.connect(_on_node_selected)
@@ -15,7 +16,7 @@ func _setup() -> void:
 
 func _enter() -> void:
 	map_ui.visible = true
-	map_ui.refresh_highlights(can_dismiss)
+	Events.can_dismiss_changed.emit(can_dismiss)
 	get_tree().paused = true
 
 func _exit() -> void:

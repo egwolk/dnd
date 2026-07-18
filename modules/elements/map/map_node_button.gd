@@ -12,25 +12,26 @@ const ICONS := {
 
 var available := false: set = set_available
 var step: MapNode: set = set_node
+var can_dismiss := false
 
-func _apply_available_visual(force_restart: bool = false, skip_animation: bool = false) -> void:
-	if step.selected:
-		return
+var pulse_animator: PulseAnimator
 
-	if force_restart:
-		animation_player.stop()
+func _ready() -> void:
+	Events.can_dismiss_changed.connect(_on_dismiss_changed)
 
-	if available and not skip_animation:
-		animation_player.play("highlight")
-	elif not available:
-		animation_player.play("RESET")
+func _on_dismiss_changed(value: bool) -> void:
+	can_dismiss = value
+	_update_highlight()
 
 func set_available(new_value: bool) -> void:
 	available = new_value
-	_apply_available_visual()
+	_update_highlight()
 
-func refresh_highlight(skip_animation: bool = false) -> void:
-	_apply_available_visual(true, skip_animation)
+func _update_highlight() -> void:
+	if available and not can_dismiss:
+		pulse_animator.play()
+	else:
+		pulse_animator.stop()
 
 func set_node(new_data: MapNode) -> void:
 	step = new_data
@@ -38,6 +39,7 @@ func set_node(new_data: MapNode) -> void:
 	scale = ICONS[step.type][1]
 	pivot_offset = size / 2
 	position = step.position - pivot_offset
+	pulse_animator = PulseAnimator.new(self, ICONS[step.type][1])
 
 func _on_map_node_selected() -> void:
 	Events.selected.emit(step)
@@ -46,4 +48,5 @@ func _on_pressed() -> void:
 	if not available:
 		return
 	step.selected = true
+	pulse_animator.stop()
 	animation_player.play("select")

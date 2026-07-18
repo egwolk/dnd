@@ -5,6 +5,6 @@
 [node name="MapLine" type="Line2D" unique_id=1294571402]
 texture_filter = 1
 texture_repeat = 2
-width = 80.0
+width = 40.0
 texture = ExtResource("1_i8hqi")
 texture_mode = 1
