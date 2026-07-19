@@ -48,5 +48,6 @@ func _on_pressed() -> void:
 	if not available:
 		return
 	step.selected = true
+	Events.path_chosen.emit(step)
 	pulse_animator.stop()
 	animation_player.play("select")
