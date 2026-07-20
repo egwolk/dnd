@@ -9,6 +9,7 @@ const MAP_NODE = preload("res://modules/elements/map/map_node_button.tscn")
 @onready var steps: Control = %map_nodes
 @onready var visuals: Control = $PanelContainer/MarginContainer/ScrollContainer/map_visuals
 @onready var scroll_container: ScrollContainer = $PanelContainer/MarginContainer/ScrollContainer
+@onready var background: NinePatchRect = $PanelContainer/MarginContainer/ScrollContainer/map_visuals/NinePatchRect
 
 var map_data: Array[Array]
 var steps_taken: int
@@ -18,6 +19,7 @@ var line_renderer: MapLineRenderer
 
 const BOTTOM_MARGIN := 200
 const TOP_MARGIN := MapGenerator.Y_DIST + 200
+const BACKGROUND_HORIZONTAL_PADDING := 100
 
 func _ready() -> void:
 	line_renderer = MapLineRenderer.new(lines)
@@ -43,6 +45,8 @@ func create_map() -> void:
 
 	steps.position = Vector2(x_offset, map_height_pixels + TOP_MARGIN)
 	lines.position = Vector2(x_offset, map_height_pixels + TOP_MARGIN)
+	background.position.x = x_offset - BACKGROUND_HORIZONTAL_PADDING
+	background.size.x = map_width_pixels + BACKGROUND_HORIZONTAL_PADDING * 2
 
 	for current_node: Array in map_data:
 		for step: MapNode in current_node:

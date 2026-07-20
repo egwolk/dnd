@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7d7uw5cbdo1w" path="res://modules/elements/map/map_view_state.gd" id="1_5irdg"]
 [ext_resource type="Script" uid="uid://ei5g3436bemv" path="res://modules/elements/map/map_generator.gd" id="2_db85m"]
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
+[ext_resource type="Texture2D" uid="uid://b6bw608s3n75t" path="res://assets/public/container.png" id="4_vn8ea"]
 
 [node name="map_view_state" type="LimboState" unique_id=852265533]
 process_mode = 3
@@ -43,6 +44,21 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="NinePatchRect" type="NinePatchRect" parent="map/PanelContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1275169510]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 7.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = ExtResource("4_vn8ea")
+region_rect = Rect2(8, 0, 8, 9)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 3
+
 [node name="map_lines" type="Control" parent="map/PanelContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1045827904]
 unique_name_in_owner = true
 anchors_preset = 0
@@ -56,52 +72,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="elements" type="VBoxContainer" parent="map/PanelContainer" unique_id=1213394658]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 200
-alignment = 1
-
-[node name="title" type="Label" parent="map/PanelContainer/elements" unique_id=201013223]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 64
-text = "MAP SCREEN"
-
-[node name="btns" type="VBoxContainer" parent="map/PanelContainer/elements" unique_id=2124432607]
-visible = false
-layout_mode = 2
-
-[node name="fishing" type="Button" parent="map/PanelContainer/elements/btns" unique_id=1437458207 groups=["map_buttons"]]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "FISHING NODE"
-
-[node name="shop" type="Button" parent="map/PanelContainer/elements/btns" unique_id=1928699265 groups=["map_buttons"]]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "SHOP NODE"
-
-[node name="event" type="Button" parent="map/PanelContainer/elements/btns" unique_id=1361380220 groups=["map_buttons"]]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "EVENT  NODE"
-
-[node name="boss" type="Button" parent="map/PanelContainer/elements/btns" unique_id=358751034 groups=["map_buttons"]]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "BOSS NODE"
-
 [node name="map_generator" type="Node" parent="map" unique_id=1908666363]
 unique_name_in_owner = true
 script = ExtResource("2_db85m")
-
-[connection signal="pressed" from="map/PanelContainer/elements/btns/fishing" to="." method="_on_fishing_pressed"]
-[connection signal="pressed" from="map/PanelContainer/elements/btns/shop" to="." method="_on_shop_pressed"]
-[connection signal="pressed" from="map/PanelContainer/elements/btns/event" to="." method="_on_event_pressed"]
-[connection signal="pressed" from="map/PanelContainer/elements/btns/boss" to="." method="_on_boss_pressed"]
