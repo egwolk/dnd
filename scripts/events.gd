@@ -6,3 +6,4 @@ signal map_node_pressed
 signal selected(step: MapNode)
 signal path_chosen(step: MapNode)
 signal can_dismiss_changed(value: bool)
+signal line_animation_finished(step: MapNode)

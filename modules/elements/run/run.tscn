@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://c0bnpsdhg6wkm" path="res://modules/elements/map_node_fishing/fishing_node.tscn" id="8_r81u6"]
 [ext_resource type="PackedScene" uid="uid://b5k2b8yd1k4tk" path="res://modules/elements/map_node_event/event_node.tscn" id="9_8wlpx"]
 [ext_resource type="PackedScene" uid="uid://c0gdfmjmy3b0x" path="res://modules/elements/test_sprite/test_player.tscn" id="11_dlggn"]
-[ext_resource type="AudioStream" uid="uid://cunbyrr84cl6v" path="res://assets/public/test_music.mp3" id="12_kuvgl"]
 
 [node name="run" type="Control" unique_id=182202977]
 layout_mode = 3
@@ -76,6 +75,4 @@ text = "press ← or → to test player state change"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=751590399]
 process_mode = 3
-stream = ExtResource("12_kuvgl")
 autoplay = true
-parameters/looping = true

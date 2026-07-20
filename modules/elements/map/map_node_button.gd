@@ -18,6 +18,7 @@ var pulse_animator: PulseAnimator
 
 func _ready() -> void:
 	Events.can_dismiss_changed.connect(_on_dismiss_changed)
+	Events.line_animation_finished.connect(_on_line_animation_finished)
 
 func _on_dismiss_changed(value: bool) -> void:
 	can_dismiss = value
@@ -44,10 +45,13 @@ func set_node(new_data: MapNode) -> void:
 func _on_map_node_selected() -> void:
 	Events.selected.emit(step)
 
+func _on_line_animation_finished(finished_step: MapNode) -> void:
+	if finished_step == step:
+		animation_player.play("select")
+
 func _on_pressed() -> void:
 	if not available:
 		return
 	step.selected = true
 	Events.path_chosen.emit(step)
 	pulse_animator.stop()
-	animation_player.play("select")

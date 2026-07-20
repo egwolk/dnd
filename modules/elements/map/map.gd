@@ -103,10 +103,12 @@ func _line_key(from_node: MapNode, to_node: MapNode) -> String:
 func _animate_line(from_node: MapNode, to_node: MapNode) -> void:
 	var key := _line_key(from_node, to_node)
 	if not line_map.has(key):
+		Events.line_animation_finished.emit(to_node)
 		return
 
 	var mat := (line_map[key] as Line2D).material as ShaderMaterial
 	if mat == null:
+		Events.line_animation_finished.emit(to_node)
 		return
 
 	var tween := create_tween()
@@ -114,6 +116,7 @@ func _animate_line(from_node: MapNode, to_node: MapNode) -> void:
 		func(value: float) -> void: mat.set_shader_parameter("progress", value),
 		0.0, 1.0, 0.4
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.finished.connect(func() -> void: Events.line_animation_finished.emit(to_node))
 
 func _color_traveled_path() -> void:
 	for current_step: Array in map_data:
@@ -129,14 +132,13 @@ func _color_traveled_path() -> void:
 func _on_map_node_path_chosen(step: MapNode) -> void:
 	if last_node:
 		_animate_line(last_node, step)
+	else:
+		Events.line_animation_finished.emit(step)
 
 func _on_map_node_selected(step: MapNode) -> void:
 	for map_node: MapNodeButton in steps.get_children():
 		if map_node.step.row == step.row:
 			map_node.available = false
-
-	if last_node:
-		_animate_line(last_node, step)
 
 	last_node = step
 	steps_taken += 1
