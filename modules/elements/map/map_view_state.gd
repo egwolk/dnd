@@ -16,6 +16,7 @@ func _setup() -> void:
 
 func _enter() -> void:
 	map_ui.visible = true
+	map_ui.scroll_to_current_node()
 	Events.can_dismiss_changed.emit(can_dismiss)
 	get_tree().paused = true
 

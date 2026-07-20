@@ -57,7 +57,19 @@ func create_map() -> void:
 	line_renderer.reveal_traveled_path(map_data)
 
 	await get_tree().process_frame
-	scroll_container.scroll_vertical = int(visuals.custom_minimum_size.y - scroll_container.size.y)
+	scroll_to_current_node()
+
+func scroll_to_current_node() -> void:
+	var max_scroll := int(visuals.custom_minimum_size.y - scroll_container.size.y)
+	var target_scroll: int
+
+	if last_node:
+		var node_y := steps.position.y + last_node.position.y
+		target_scroll = int(node_y - scroll_container.size.y * 0.5)
+	else:
+		target_scroll = max_scroll
+
+	scroll_container.scroll_vertical = clampi(target_scroll, 0, max_scroll)
 
 func unlock_node(which_node: int = steps_taken) -> void:
 	for map_node: MapNodeButton in steps.get_children():
