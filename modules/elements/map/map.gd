@@ -18,6 +18,7 @@ var camera_edge_y: float
 var line_map: Dictionary
 
 const SELECTED_LINE_COLOR := Color("red")
+const LINE_SHADER := preload("res://modules/elements/map/map_line_animation.gdshader")
 
 const BOTTOM_MARGIN := 200
 const TOP_MARGIN := MapGenerator.Y_DIST + 200
@@ -85,16 +86,34 @@ func _connect_lines(step: MapNode) -> void:
 		var new_map_line := MAP_LINE.instantiate() as Line2D
 		new_map_line.add_point(step.position)
 		new_map_line.add_point(next.position)
+
+		var mat := ShaderMaterial.new()
+		mat.shader = LINE_SHADER
+		mat.set_shader_parameter("line_start", step.position)
+		mat.set_shader_parameter("line_end", next.position)
+		mat.set_shader_parameter("reveal_color", SELECTED_LINE_COLOR)
+		new_map_line.material = mat
+
 		lines.add_child(new_map_line)
 		line_map[_line_key(step, next)] = new_map_line
 
 func _line_key(from_node: MapNode, to_node: MapNode) -> String:
 	return "%s->%s" % [from_node.get_instance_id(), to_node.get_instance_id()]
 
-func _color_line(from_node: MapNode, to_node: MapNode) -> void:
+func _animate_line(from_node: MapNode, to_node: MapNode) -> void:
 	var key := _line_key(from_node, to_node)
-	if line_map.has(key):
-		line_map[key].modulate = SELECTED_LINE_COLOR
+	if not line_map.has(key):
+		return
+
+	var mat := (line_map[key] as Line2D).material as ShaderMaterial
+	if mat == null:
+		return
+
+	var tween := create_tween()
+	tween.tween_method(
+		func(value: float) -> void: mat.set_shader_parameter("progress", value),
+		0.0, 1.0, 0.4
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _color_traveled_path() -> void:
 	for current_step: Array in map_data:
@@ -103,11 +122,13 @@ func _color_traveled_path() -> void:
 				continue
 			for next: MapNode in step.next_nodes:
 				if next.selected:
-					_color_line(step, next)
+					var mat := (line_map[_line_key(step, next)] as Line2D).material as ShaderMaterial
+					if mat:
+						mat.set_shader_parameter("progress", 1.0)
 
 func _on_map_node_path_chosen(step: MapNode) -> void:
 	if last_node:
-		_color_line(last_node, step)
+		_animate_line(last_node, step)
 
 func _on_map_node_selected(step: MapNode) -> void:
 	for map_node: MapNodeButton in steps.get_children():
@@ -115,7 +136,7 @@ func _on_map_node_selected(step: MapNode) -> void:
 			map_node.available = false
 
 	if last_node:
-		_color_line(last_node, step)
+		_animate_line(last_node, step)
 
 	last_node = step
 	steps_taken += 1
