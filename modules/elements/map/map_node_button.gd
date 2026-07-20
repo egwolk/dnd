@@ -9,6 +9,7 @@ const ICONS := {
 }
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var select_sprite: Sprite2D = $Sprite2D
 
 var available := false: set = set_available
 var step: MapNode: set = set_node
@@ -47,6 +48,7 @@ func _on_map_node_selected() -> void:
 
 func _on_line_animation_finished(finished_step: MapNode) -> void:
 	if finished_step == step:
+		select_sprite.rotation = randf_range(0.0, TAU)
 		animation_player.play("select")
 
 func _on_pressed() -> void:
