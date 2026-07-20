@@ -76,6 +76,10 @@ func _spawn_node(step: MapNode) -> void:
 	line_renderer.connect_nodes(step)
 
 func _on_map_node_path_chosen(step: MapNode) -> void:
+	for map_node: MapNodeButton in steps.get_children():
+		if map_node.step.row == step.row:
+			map_node.available = false
+
 	if last_node:
 		line_renderer.animate(last_node, step)
 	else:
