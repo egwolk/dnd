@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b7d7uw5cbdo1w" path="res://modules/elements/map/map_view_state.gd" id="1_5irdg"]
 [ext_resource type="Script" uid="uid://ei5g3436bemv" path="res://modules/elements/map/map_generator.gd" id="2_db85m"]
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
-[ext_resource type="Texture2D" uid="uid://b6bw608s3n75t" path="res://assets/public/container.png" id="4_vn8ea"]
+[ext_resource type="Texture2D" uid="uid://dc1vsv8k67hts" path="res://assets/public/map_bg.png" id="3_vn8ea"]
 
 [node name="map_view_state" type="LimboState" unique_id=852265533]
 process_mode = 3
@@ -47,17 +47,17 @@ size_flags_vertical = 4
 [node name="NinePatchRect" type="NinePatchRect" parent="map/PanelContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1275169510]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 7.0
-offset_bottom = 8.0
+anchors_preset = -1
+anchor_bottom = 0.92
+offset_right = 100.0
+offset_bottom = 200.0
 grow_vertical = 2
-texture = ExtResource("4_vn8ea")
-region_rect = Rect2(8, 0, 8, 9)
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 3
+texture = ExtResource("3_vn8ea")
+region_rect = Rect2(13, 17, 332, 332)
+patch_margin_left = 50
+patch_margin_top = 100
+patch_margin_right = 50
+patch_margin_bottom = 100
 
 [node name="map_lines" type="Control" parent="map/PanelContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1045827904]
 unique_name_in_owner = true
