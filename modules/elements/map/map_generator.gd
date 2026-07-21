@@ -43,7 +43,8 @@ func _generate_initial_grid() -> Array[Array]:
 
 		for j in MAP_WIDTH:
 			var current_node := MapNode.new()
-			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
+			var placement_randomness := 0 if i == STEPS - 1 else PLACEMENT_RANDOMNESS
+			var offset := Vector2(randf(), randf()) * placement_randomness
 
 			current_node.position = Vector2(j * X_DIST, i * -Y_DIST) + offset
 			current_node.row = i
