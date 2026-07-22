@@ -2,50 +2,57 @@
 
 [ext_resource type="Texture2D" uid="uid://b2j4ewaocx6iv" path="res://assets/public/map_node_fishing.png" id="1_1c22q"]
 [ext_resource type="Script" uid="uid://dndqeh6kitkdq" path="res://modules/elements/map/map_node_button.gd" id="2_1ay7k"]
+[ext_resource type="Shader" uid="uid://c52h86pkfytn2" path="res://modules/elements/map/map_select_animation.gdshader" id="3_1ay7k"]
 [ext_resource type="Texture2D" uid="uid://cn85tdoxov608" path="res://assets/public/circle.png" id="3_e7yb7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ay7k"]
+resource_local_to_scene = true
+shader = ExtResource("3_1ay7k")
+shader_parameter/progress = 0.0
+shader_parameter/start_angle_degrees = 30.0
 
 [sub_resource type="Animation" id="Animation_1c22q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_e7yb7"]
 resource_name = "select"
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"_on_map_node_selected"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgjac"]
@@ -63,8 +70,8 @@ texture_normal = ExtResource("1_1c22q")
 script = ExtResource("2_1ay7k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595138988]
-modulate = Color(1, 1, 1, 0)
 texture_filter = 1
+material = SubResource("ShaderMaterial_1ay7k")
 position = Vector2(13.999999, 16.5)
 scale = Vector2(0.028125, 0.028196756)
 texture = ExtResource("3_e7yb7")
