@@ -109,3 +109,11 @@ func _on_map_node_selected(step: MapNode) -> void:
 	last_node = step
 	steps_taken += 1
 	unlock_next_nodes()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_VISIBILITY_CHANGED and is_node_ready():
+		for map_node: MapNodeButton in steps.get_children():
+			if visible:
+				map_node.resume_pulse()
+			else:
+				map_node.pause_pulse()

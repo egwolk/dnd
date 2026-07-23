@@ -8,6 +8,9 @@ const ICONS := {
 	MapNode.Type.BOSS: [preload("res://assets/public/map_node_boss.png"), Vector2(6.0, 6.0)],
 }
 
+const VALUE_DIMMED := 0.5
+const VALUE_HOVERED := 1.0
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var select_sprite: Sprite2D = $Sprite2D
 
@@ -20,6 +23,8 @@ var pulse_animator: PulseAnimator
 func _ready() -> void:
 	Events.can_dismiss_changed.connect(_on_dismiss_changed)
 	Events.line_animation_finished.connect(_on_line_animation_finished)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 func _on_dismiss_changed(value: bool) -> void:
 	can_dismiss = value
@@ -29,12 +34,13 @@ func set_available(new_value: bool) -> void:
 	available = new_value
 	_update_highlight()
 
+
 func _update_highlight() -> void:
-	if available and not can_dismiss:
+	if _is_pulsing():
 		var phase_offset := (get_index() % 2) * PulseAnimator.PULSE_DURATION
 		pulse_animator.play(phase_offset)
 	else:
-		pulse_animator.stop()
+		pulse_animator.stop(VALUE_HOVERED if step.selected else VALUE_DIMMED)
 
 func set_node(new_data: MapNode) -> void:
 	step = new_data
@@ -42,7 +48,7 @@ func set_node(new_data: MapNode) -> void:
 	scale = ICONS[step.type][1]
 	pivot_offset = size / 2
 	position = step.position - pivot_offset
-	pulse_animator = PulseAnimator.new(self, ICONS[step.type][1])
+	pulse_animator = PulseAnimator.new(self, ICONS[step.type][1], VALUE_DIMMED, VALUE_HOVERED)
 
 func _on_map_node_selected() -> void:
 	Events.selected.emit(step)
@@ -57,4 +63,27 @@ func _on_pressed() -> void:
 		return
 	step.selected = true
 	Events.path_chosen.emit(step)
-	pulse_animator.stop()
+	pulse_animator.stop(VALUE_HOVERED)
+
+func _is_pulsing() -> bool:
+	return available and not can_dismiss
+
+func _on_mouse_entered() -> void:
+	if step.selected or _is_pulsing():
+		return
+	modulate.v = VALUE_HOVERED
+
+func _on_mouse_exited() -> void:
+	if step.selected or _is_pulsing():
+		return
+	modulate.v = VALUE_DIMMED
+
+func pause_pulse() -> void:
+	pulse_animator.pause()
+
+func resume_pulse() -> void:
+	if _is_pulsing():
+		var phase_offset := (get_index() % 2) * PulseAnimator.PULSE_DURATION
+		pulse_animator.play(phase_offset)
+	else:
+		pulse_animator.stop(VALUE_HOVERED if step.selected else VALUE_DIMMED, false)
