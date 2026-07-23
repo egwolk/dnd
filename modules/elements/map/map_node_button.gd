@@ -3,7 +3,7 @@ class_name MapNodeButton extends TextureButton
 const ICONS := {
 	MapNode.Type.NOT_ASSIGNED: [null, Vector2(3.0, 3.0)],
 	MapNode.Type.FISHING: [preload("res://assets/public/map_node_fishing.png"), Vector2(3.0, 3.0)],
-	MapNode.Type.SHOP: [preload("res://assets/public/map_node_shop.png"), Vector2(3.0, 3.0)],
+	MapNode.Type.SHOP: [preload("res://assets/public/map_node_shop.png"), Vector2(5.0, 5.0)],
 	MapNode.Type.EVENT: [preload("res://assets/public/map_node_event.png"), Vector2(3.0, 3.0)],
 	MapNode.Type.BOSS: [preload("res://assets/public/map_node_boss.png"), Vector2(6.0, 6.0)],
 }

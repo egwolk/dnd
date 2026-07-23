@@ -18,7 +18,7 @@ var camera_edge_y: float
 var line_renderer: MapLineRenderer
 
 const BOTTOM_MARGIN := 200
-const TOP_MARGIN := MapGenerator.Y_DIST + 200
+const TOP_MARGIN := MapGenerator.Y_DIST + 150
 const BACKGROUND_HORIZONTAL_PADDING := 150
 
 func _ready() -> void:
