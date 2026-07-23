@@ -31,7 +31,8 @@ func set_available(new_value: bool) -> void:
 
 func _update_highlight() -> void:
 	if available and not can_dismiss:
-		pulse_animator.play()
+		var phase_offset := (get_index() % 2) * PulseAnimator.PULSE_DURATION
+		pulse_animator.play(phase_offset)
 	else:
 		pulse_animator.stop()
 
