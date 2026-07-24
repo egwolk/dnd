@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://bxlfhaw3md5hj"]
 
 [ext_resource type="Texture2D" uid="uid://coij1i0jjw0pu" path="res://assets/public/map_node_fishing.png" id="1_1c22q"]
+[ext_resource type="Shader" uid="uid://bs30d36kq20j6" path="res://modules/elements/map/map_node_outline.gdshader" id="1_e7yb7"]
 [ext_resource type="Script" uid="uid://dndqeh6kitkdq" path="res://modules/elements/map/map_node_button.gd" id="2_1ay7k"]
 [ext_resource type="Shader" uid="uid://c52h86pkfytn2" path="res://modules/elements/map/map_select_animation.gdshader" id="3_1ay7k"]
 [ext_resource type="Texture2D" uid="uid://cn85tdoxov608" path="res://assets/public/circle.png" id="3_e7yb7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgjac"]
+shader = ExtResource("1_e7yb7")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 32.0
+shader_parameter/sample_count = 8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ay7k"]
 resource_local_to_scene = true
@@ -63,6 +70,8 @@ _data = {
 
 [node name="MapNodeButton" type="TextureButton" unique_id=1155575273 groups=["map_buttons"]]
 modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_hgjac")
 offset_right = 32.0
 offset_bottom = 32.0
 pivot_offset = Vector2(16, 16)
