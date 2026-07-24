@@ -68,15 +68,30 @@ func create_map() -> void:
 	await get_tree().process_frame
 	scroll_to_current_node()
 
-func scroll_to_current_node() -> void:
+func scroll_to_current_node(prefer_current_node: bool = false) -> void:
 	var max_scroll := int(visuals.custom_minimum_size.y - scroll_container.size.y)
 	var target_scroll: int
 
-	if last_node:
+	if prefer_current_node and last_node:
 		var node_y := steps.position.y + last_node.position.y
 		target_scroll = int(node_y - scroll_container.size.y * 0.5)
 	else:
-		target_scroll = max_scroll
+		var available_nodes: Array[MapNodeButton] = []
+		for map_node: MapNodeButton in steps.get_children():
+			if map_node.available:
+				available_nodes.append(map_node)
+
+		if available_nodes.size() > 0:
+			var avg_y := 0.0
+			for map_node in available_nodes:
+				avg_y += map_node.position.y
+			avg_y /= available_nodes.size()
+			target_scroll = int(steps.position.y + avg_y - scroll_container.size.y * 0.5)
+		elif last_node:
+			var node_y := steps.position.y + last_node.position.y
+			target_scroll = int(node_y - scroll_container.size.y * 0.5)
+		else:
+			target_scroll = max_scroll
 
 	scroll_container.scroll_vertical = clampi(target_scroll, 0, max_scroll)
 
