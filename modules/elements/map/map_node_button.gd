@@ -10,9 +10,13 @@ const ICONS := {
 
 const VALUE_DIMMED := 0.5
 const VALUE_HOVERED := 1.0
+const OUTLINE_COLOR_HOVER := Color.WHITE
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var select_sprite: Sprite2D = $Sprite2D
+@onready var outline_material: ShaderMaterial = material
+
+var _outline_color_default: Color
 
 var available := false: set = set_available
 var step: MapNode: set = set_node
@@ -21,6 +25,7 @@ var can_dismiss := false
 var pulse_animator: PulseAnimator
 
 func _ready() -> void:
+	_outline_color_default = outline_material.get_shader_parameter("outline_color")
 	Events.can_dismiss_changed.connect(_on_dismiss_changed)
 	Events.line_animation_finished.connect(_on_line_animation_finished)
 	mouse_entered.connect(_on_mouse_entered)
@@ -70,6 +75,7 @@ func _is_pulsing() -> bool:
 
 func _on_mouse_entered() -> void:
 	if _is_pulsing():
+		outline_material.set_shader_parameter("outline_color", OUTLINE_COLOR_HOVER)
 		return
 	if not step.selected:
 		modulate.v = VALUE_HOVERED
@@ -77,6 +83,7 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	if _is_pulsing():
+		outline_material.set_shader_parameter("outline_color", _outline_color_default)
 		return
 	if not step.selected:
 		modulate.v = VALUE_DIMMED
