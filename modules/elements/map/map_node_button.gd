@@ -72,11 +72,13 @@ func _on_mouse_entered() -> void:
 	if step.selected or _is_pulsing():
 		return
 	modulate.v = VALUE_HOVERED
+	pulse_animator.hover_in()
 
 func _on_mouse_exited() -> void:
 	if step.selected or _is_pulsing():
 		return
 	modulate.v = VALUE_DIMMED
+	pulse_animator.hover_out()
 
 func pause_pulse() -> void:
 	pulse_animator.pause()

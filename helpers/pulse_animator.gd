@@ -37,6 +37,25 @@ func play(delay: float = 0.0) -> void:
 	tween.tween_property(target, "scale", base_scale, PULSE_DURATION)
 	tween.parallel().tween_property(target, "modulate:v", modulate_min, PULSE_DURATION)
 
+func hover_in() -> void:
+	if _is_playing:
+		return
+	if tween and tween.is_valid():
+		tween.kill()
+	tween = target.create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(target, "scale", base_scale * PULSE_FACTOR, EASE_DURATION)
+
+func hover_out() -> void:
+	if _is_playing:
+		return
+	if tween and tween.is_valid():
+		tween.kill()
+	tween = target.create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(target, "scale", base_scale, EASE_DURATION)
+
+
 func pause() -> void:
 	_is_playing = false
 	if tween and tween.is_valid():
