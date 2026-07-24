@@ -18,8 +18,9 @@ var camera_edge_y: float
 var line_renderer: MapLineRenderer
 
 const BOTTOM_MARGIN := 200
-const TOP_MARGIN := MapGenerator.Y_DIST + 150
+const TOP_MARGIN := MapGenerator.Y_DIST + 200
 const BACKGROUND_HORIZONTAL_PADDING := 150
+const EXTRA_SCROLL_PADDING := 200 
 
 func _ready() -> void:
 	line_renderer = MapLineRenderer.new(lines)
@@ -43,10 +44,13 @@ func create_map() -> void:
 	var viewport_width := get_viewport_rect().size.x
 	var x_offset := (viewport_width - map_width_pixels) / 2
 
-	steps.position = Vector2(x_offset, map_height_pixels + TOP_MARGIN)
-	lines.position = Vector2(x_offset, map_height_pixels + TOP_MARGIN)
+	steps.position = Vector2(x_offset, map_height_pixels + TOP_MARGIN +EXTRA_SCROLL_PADDING)
+	lines.position = Vector2(x_offset, map_height_pixels + TOP_MARGIN + EXTRA_SCROLL_PADDING)
+
 	background.position.x = x_offset - BACKGROUND_HORIZONTAL_PADDING
+	background.position.y = EXTRA_SCROLL_PADDING
 	background.size.x = map_width_pixels + BACKGROUND_HORIZONTAL_PADDING * 2
+	background.size.y = map_height_pixels + BOTTOM_MARGIN + TOP_MARGIN
 
 	for current_node: Array in map_data:
 		for step: MapNode in current_node:
@@ -56,7 +60,8 @@ func create_map() -> void:
 	var middle := floori(MapGenerator.MAP_WIDTH * 0.5)
 	_spawn_node(map_data[MapGenerator.STEPS - 1][middle])
 
-	visuals.custom_minimum_size = Vector2(map_width_pixels, map_height_pixels + BOTTOM_MARGIN + TOP_MARGIN)
+	visuals.custom_minimum_size = Vector2(map_width_pixels, map_height_pixels + BOTTOM_MARGIN + TOP_MARGIN + EXTRA_SCROLL_PADDING * 2)
+	background.size.y = map_height_pixels + BOTTOM_MARGIN + TOP_MARGIN
 
 	line_renderer.reveal_traveled_path(map_data)
 

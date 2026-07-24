@@ -48,7 +48,6 @@ size_flags_vertical = 4
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_bottom = 0.92
 offset_right = 100.0
 offset_bottom = 200.0
 grow_vertical = 2
