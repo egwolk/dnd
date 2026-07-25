@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
 [ext_resource type="Texture2D" uid="uid://dc1vsv8k67hts" path="res://assets/public/map_bg.png" id="3_vn8ea"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn8ea"]
+
 [node name="map_view_state" type="LimboState" unique_id=852265533]
 process_mode = 3
 script = ExtResource("1_5irdg")
@@ -19,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_pk3u7")
 
-[node name="PanelContainer" type="PanelContainer" parent="map" unique_id=1315907502]
+[node name="bgContainer" type="PanelContainer" parent="map" unique_id=1322525334]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,30 +29,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="map/PanelContainer" unique_id=818422395]
+[node name="mapContainer" type="PanelContainer" parent="map" unique_id=1315907502]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vn8ea")
+
+[node name="MarginContainer" type="MarginContainer" parent="map/mapContainer" unique_id=818422395]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="ScrollContainer" type="ScrollContainer" parent="map/PanelContainer/MarginContainer" unique_id=203628848]
+[node name="ScrollContainer" type="ScrollContainer" parent="map/mapContainer/MarginContainer" unique_id=203628848]
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="map_visuals" type="Control" parent="map/PanelContainer/MarginContainer/ScrollContainer" unique_id=1240043874]
+[node name="map_visuals" type="Control" parent="map/mapContainer/MarginContainer/ScrollContainer" unique_id=1240043874]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="NinePatchRect" type="NinePatchRect" parent="map/PanelContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1275169510]
+[node name="NinePatchRect" type="NinePatchRect" parent="map/mapContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1275169510]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 offset_right = 100.0
 offset_bottom = 200.0
 grow_vertical = 2
+pivot_offset = Vector2(50, 100)
 texture = ExtResource("3_vn8ea")
 region_rect = Rect2(13, 17, 332, 332)
 patch_margin_left = 50
@@ -58,11 +71,11 @@ patch_margin_top = 100
 patch_margin_right = 50
 patch_margin_bottom = 100
 
-[node name="map_lines" type="Control" parent="map/PanelContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1045827904]
+[node name="map_lines" type="Control" parent="map/mapContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1045827904]
 unique_name_in_owner = true
 anchors_preset = 0
 
-[node name="map_nodes" type="Control" parent="map/PanelContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=247704018]
+[node name="map_nodes" type="Control" parent="map/mapContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=247704018]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

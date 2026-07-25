@@ -1,37 +1,59 @@
 class_name Map extends Control
 
-const SCROLL_SPEED := 15
+const SCROLL_SPEED := 50
+const SCROLL_SMOOTHING := 10.0
 
 const MAP_NODE = preload("res://modules/elements/map/map_node_button.tscn")
 
 @onready var map_generator: MapGenerator = %map_generator
 @onready var lines: Control = %map_lines
 @onready var steps: Control = %map_nodes
-@onready var visuals: Control = $PanelContainer/MarginContainer/ScrollContainer/map_visuals
-@onready var scroll_container: ScrollContainer = $PanelContainer/MarginContainer/ScrollContainer
-@onready var background: NinePatchRect = $PanelContainer/MarginContainer/ScrollContainer/map_visuals/NinePatchRect
+@onready var visuals: Control = $mapContainer/MarginContainer/ScrollContainer/map_visuals
+@onready var scroll_container: ScrollContainer = $mapContainer/MarginContainer/ScrollContainer
+@onready var background: NinePatchRect = $mapContainer/MarginContainer/ScrollContainer/map_visuals/NinePatchRect
 
 var map_data: Array[Array]
 var steps_taken: int
 var last_node: MapNode
 var camera_edge_y: float
 var line_renderer: MapLineRenderer
+var scroll_target: float
+var last_applied_scroll: int
 
 const BOTTOM_MARGIN := 200
 const TOP_MARGIN := MapGenerator.Y_DIST + 200
 const BACKGROUND_HORIZONTAL_PADDING := 150
-const EXTRA_SCROLL_PADDING := 200 
+const EXTRA_SCROLL_PADDING := 100
 
 func _ready() -> void:
 	line_renderer = MapLineRenderer.new(lines)
 	Events.selected.connect(_on_map_node_selected)
 	Events.path_chosen.connect(_on_map_node_path_chosen)
+	scroll_target = scroll_container.scroll_vertical
+	last_applied_scroll = scroll_container.scroll_vertical
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
-		scroll_container.scroll_vertical -= SCROLL_SPEED
+		scroll_target  -= SCROLL_SPEED
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("scroll_down"):
-		scroll_container.scroll_vertical += SCROLL_SPEED
+		scroll_target += SCROLL_SPEED
+		get_viewport().set_input_as_handled()
+	scroll_target = clampf(scroll_target, 0, _get_max_scroll())
+
+func _process(delta: float) -> void:
+	# Something outside our lerp (drag/touch scroll) moved it - stop fighting, adopt it.
+	if scroll_container.scroll_vertical != last_applied_scroll:
+		scroll_target = scroll_container.scroll_vertical
+
+	if not is_equal_approx(scroll_container.scroll_vertical, scroll_target):
+		scroll_container.scroll_vertical = roundi(
+			lerpf(scroll_container.scroll_vertical, scroll_target, SCROLL_SMOOTHING * delta)
+		)
+
+	last_applied_scroll = scroll_container.scroll_vertical
+func _get_max_scroll() -> int:
+	return int(visuals.custom_minimum_size.y - scroll_container.size.y)
 
 func generate_new_map() -> void:
 	steps_taken = 0
@@ -93,7 +115,10 @@ func scroll_to_current_node(prefer_current_node: bool = false) -> void:
 		else:
 			target_scroll = max_scroll
 
-	scroll_container.scroll_vertical = clampi(target_scroll, 0, max_scroll)
+	target_scroll = clampi(target_scroll, 0, max_scroll)
+	scroll_target = target_scroll
+	scroll_container.scroll_vertical = target_scroll
+	last_applied_scroll = target_scroll
 
 func unlock_node(which_node: int = steps_taken) -> void:
 	for map_node: MapNodeButton in steps.get_children():
