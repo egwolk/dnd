@@ -2,6 +2,7 @@ class_name Map extends Control
 
 const SCROLL_SPEED := 50
 const SCROLL_SMOOTHING := 10.0
+const DRAG_THRESHOLD := 8.0
 
 const MAP_NODE = preload("res://modules/elements/map/map_node_button.tscn")
 
@@ -19,6 +20,9 @@ var camera_edge_y: float
 var line_renderer: MapLineRenderer
 var scroll_target: float
 var last_applied_scroll: int
+var dragging := false
+var drag_start_pos: Vector2
+var drag_start_scroll: float
 
 const BOTTOM_MARGIN := 200
 const TOP_MARGIN := MapGenerator.Y_DIST + 200
@@ -34,15 +38,28 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
-		scroll_target  -= SCROLL_SPEED
+		scroll_target -= SCROLL_SPEED
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("scroll_down"):
 		scroll_target += SCROLL_SPEED
 		get_viewport().set_input_as_handled()
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			dragging = true
+			drag_start_pos = event.position
+			drag_start_scroll = scroll_target
+		else:
+			dragging = false
+	elif event is InputEventMouseMotion and dragging:
+		var motion_event := event as InputEventMouseMotion
+		var delta_y := motion_event.position.y - drag_start_pos.y
+		if absf(delta_y) > DRAG_THRESHOLD:
+			scroll_target = drag_start_scroll - delta_y
+			get_viewport().set_input_as_handled()
+
 	scroll_target = clampf(scroll_target, 0, _get_max_scroll())
 
 func _process(delta: float) -> void:
-	# Something outside our lerp (drag/touch scroll) moved it - stop fighting, adopt it.
 	if scroll_container.scroll_vertical != last_applied_scroll:
 		scroll_target = scroll_container.scroll_vertical
 
