@@ -1,7 +1,7 @@
 class_name PulseAnimator extends RefCounted
 
 const PULSE_FACTOR := 1.2
-const PULSE_DURATION := 0.5
+const PULSE_DURATION := 0.6
 const EASE_DURATION := 0.25
 
 var target: CanvasItem

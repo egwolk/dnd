@@ -1,9 +1,5 @@
 class_name Map extends Control
 
-const SCROLL_SPEED := 50
-const SCROLL_SMOOTHING := 10.0
-const DRAG_THRESHOLD := 8.0
-
 const MAP_NODE = preload("res://modules/elements/map/map_node_button.tscn")
 
 @onready var map_generator: MapGenerator = %map_generator
@@ -16,13 +12,8 @@ const MAP_NODE = preload("res://modules/elements/map/map_node_button.tscn")
 var map_data: Array[Array]
 var steps_taken: int
 var last_node: MapNode
-var camera_edge_y: float
 var line_renderer: MapLineRenderer
-var scroll_target: float
-var last_applied_scroll: int
-var dragging := false
-var drag_start_pos: Vector2
-var drag_start_scroll: float
+var scroller: MapScroller
 
 const BOTTOM_MARGIN := 200
 const TOP_MARGIN := MapGenerator.Y_DIST + 200
@@ -31,46 +22,17 @@ const EXTRA_SCROLL_PADDING := 100
 
 func _ready() -> void:
 	line_renderer = MapLineRenderer.new(lines)
+	scroller = MapScroller.new(scroll_container, visuals)
 	Events.selected.connect(_on_map_node_selected)
 	Events.path_chosen.connect(_on_map_node_path_chosen)
-	scroll_target = scroll_container.scroll_vertical
-	last_applied_scroll = scroll_container.scroll_vertical
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("scroll_up"):
-		scroll_target -= SCROLL_SPEED
+	if scroller.handle_input(event):
 		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("scroll_down"):
-		scroll_target += SCROLL_SPEED
-		get_viewport().set_input_as_handled()
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			dragging = true
-			drag_start_pos = event.position
-			drag_start_scroll = scroll_target
-		else:
-			dragging = false
-	elif event is InputEventMouseMotion and dragging:
-		var motion_event := event as InputEventMouseMotion
-		var delta_y := motion_event.position.y - drag_start_pos.y
-		if absf(delta_y) > DRAG_THRESHOLD:
-			scroll_target = drag_start_scroll - delta_y
-			get_viewport().set_input_as_handled()
-
-	scroll_target = clampf(scroll_target, 0, _get_max_scroll())
 
 func _process(delta: float) -> void:
-	if scroll_container.scroll_vertical != last_applied_scroll:
-		scroll_target = scroll_container.scroll_vertical
+	scroller.update(delta)
 
-	if not is_equal_approx(scroll_container.scroll_vertical, scroll_target):
-		scroll_container.scroll_vertical = roundi(
-			lerpf(scroll_container.scroll_vertical, scroll_target, SCROLL_SMOOTHING * delta)
-		)
-
-	last_applied_scroll = scroll_container.scroll_vertical
-func _get_max_scroll() -> int:
-	return int(visuals.custom_minimum_size.y - scroll_container.size.y)
 
 func generate_new_map() -> void:
 	steps_taken = 0
@@ -108,7 +70,7 @@ func create_map() -> void:
 	scroll_to_current_node()
 
 func scroll_to_current_node(prefer_current_node: bool = false) -> void:
-	var max_scroll := int(visuals.custom_minimum_size.y - scroll_container.size.y)
+	var max_scroll := scroller.get_max_scroll()
 	var target_scroll: int
 
 	if prefer_current_node and last_node:
@@ -133,9 +95,7 @@ func scroll_to_current_node(prefer_current_node: bool = false) -> void:
 			target_scroll = max_scroll
 
 	target_scroll = clampi(target_scroll, 0, max_scroll)
-	scroll_target = target_scroll
-	scroll_container.scroll_vertical = target_scroll
-	last_applied_scroll = target_scroll
+	scroller.set_target(target_scroll, true)
 
 func unlock_node(which_node: int = steps_taken) -> void:
 	for map_node: MapNodeButton in steps.get_children():
