@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://udbiwgj07e8a" path="res://modules/elements/run/run.gd" id="1_nw5js"]
 [ext_resource type="Script" uid="uid://b505fitlpmmid" path="res://modules/elements/run/run_view_controller.gd" id="2_7ywmc"]
+[ext_resource type="Texture2D" uid="uid://bsihntxsmtq61" path="res://assets/public/pexels-asadphoto-1430677.jpg" id="2_kuvgl"]
 [ext_resource type="PackedScene" uid="uid://bfepjewv8px5t" path="res://modules/UI/pause_menu/pause_menu.tscn" id="4_3du0c"]
 [ext_resource type="PackedScene" uid="uid://v5yv412sgad1" path="res://modules/UI/win_screen/win_screen.tscn" id="5_0kdji"]
 [ext_resource type="PackedScene" uid="uid://cvg3bur7nmbd7" path="res://modules/UI/lose_screen/lose_screen.tscn" id="6_vrhw1"]
@@ -20,6 +21,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nw5js")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1819917548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kuvgl")
+expand_mode = 1
 
 [node name="run_view_controller" type="LimboHSM" parent="." unique_id=161258809]
 unique_name_in_owner = true
