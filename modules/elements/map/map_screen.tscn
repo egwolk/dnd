@@ -15,7 +15,9 @@ noise = SubResource("FastNoiseLite_4w3wq")
 shader = ExtResource("3_4w3wq")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_4w3wq")
 shader_parameter/water_tint = Color(1.0588765e-06, 0.6601734, 0.8241804, 1)
-shader_parameter/tint_strength = 0.2000000095
+shader_parameter/tint_strength = 0.5
+shader_parameter/gradient_color = Color(0, 0, 1, 1)
+shader_parameter/gradient_strength = 0.90000004275
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn8ea"]
 
