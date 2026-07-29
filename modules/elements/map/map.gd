@@ -22,7 +22,7 @@ const EXTRA_SCROLL_PADDING := 100
 
 func _ready() -> void:
 	line_renderer = MapLineRenderer.new(lines)
-	scroller = MapScroller.new(scroll_container, visuals)
+	scroller = MapScroller.new(scroll_container, visuals, [background, lines, steps] as Array[Control])
 	Events.selected.connect(_on_map_node_selected)
 	Events.path_chosen.connect(_on_map_node_path_chosen)
 
