@@ -9,6 +9,9 @@ uniform vec4 gradient_map_dark : source_color = vec4(0.0, 0.0, 0.3, 1.0);
 uniform vec4 gradient_map_light : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float gradient_map_strength : hint_range(0.0, 1.0) = 1.0;
 
+uniform sampler2D caustic_texture : filter_linear, repeat_disable;
+uniform float caustic_opacity : hint_range(0.0, 1.0) = 1.0; 
+
 uniform vec4 water_tint : source_color = vec4(0.0, 0.5, 1.0, 1.0);
 uniform float tint_strength : hint_range(0.0, 1.0) = 0.5;
 
@@ -17,6 +20,8 @@ uniform float gradient_strength_bottom : hint_range(0.0, 1.0) = 0.9;
 
 uniform vec4 gradient_color_top : source_color = vec4(0.0, 1.0, 1.0, 1.0);
 uniform float gradient_strength_top : hint_range(0.0, 1.0) = 0.5;
+
+
 
 void fragment() {
 	vec3 noise_color = texture(noise_texture, SCREEN_UV + (TIME / 50.0)).rgb;
@@ -27,6 +32,10 @@ void fragment() {
 	float luminance = dot(color, vec3(0.299, 0.587, 0.114));
 	vec3 mapped_color = mix(gradient_map_dark.rgb, gradient_map_light.rgb, luminance);
 	color = mix(color, mapped_color, gradient_map_strength);
+
+	
+	vec4 caustic_sample = texture(caustic_texture, UV);
+	color = mix(color, caustic_sample.rgb, caustic_sample.a * caustic_opacity);
 
 	color = mix(color, water_tint.rgb, tint_strength);
 

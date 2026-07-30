@@ -5,6 +5,30 @@
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
 [ext_resource type="Shader" uid="uid://d151y3cdkdsr8" path="res://modules/UI/common_shaders/color_filter_blue.gdshader" id="3_4w3wq"]
 [ext_resource type="Texture2D" uid="uid://dc1vsv8k67hts" path="res://assets/public/map_bg.png" id="3_vn8ea"]
+[ext_resource type="Shader" uid="uid://dofekwkyym1l3" path="res://modules/UI/common_shaders/water_caustic.gdshader" id="4_t6hy0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w3wq"]
+shader = ExtResource("4_t6hy0")
+shader_parameter/caustic_color = Color(0.157, 0.694, 0.878, 1)
+shader_parameter/scroll_speed = 0.06
+shader_parameter/noise_scale = 20.0
+shader_parameter/band_min = 0.0450000021375
+shader_parameter/band_max = 1.0
+shader_parameter/edge_softness = 0.0170000008075
+shader_parameter/mask_base_height = 0.086000004085
+shader_parameter/mask_variation = 0.1590000075525
+shader_parameter/mask_noise_scale = 10.0
+shader_parameter/mask_speed = 0.0290000013775
+shader_parameter/bubble_count = 20
+shader_parameter/bubble_speed = 0.202000009595
+shader_parameter/bubble_min_size = 0.00400000019
+shader_parameter/bubble_max_size = 0.0130000006175
+shader_parameter/bubble_wobble = 0.0170000008075
+shader_parameter/bubble_shape_wobble = 0.086000004085
+shader_parameter/bubble_shape_speed = 5.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t6hy0"]
+viewport_path = NodePath("map/caustic")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4w3wq"]
 
@@ -12,12 +36,15 @@
 noise = SubResource("FastNoiseLite_4w3wq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vn8ea"]
+resource_local_to_scene = true
 shader = ExtResource("3_4w3wq")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_4w3wq")
 shader_parameter/posterize_levels = 2.0
 shader_parameter/gradient_map_dark = Color(0, 0, 0.3, 1)
 shader_parameter/gradient_map_light = Color(1, 1, 1, 1)
 shader_parameter/gradient_map_strength = 1.0
+shader_parameter/caustic_texture = SubResource("ViewportTexture_t6hy0")
+shader_parameter/caustic_opacity = 0.50000002375
 shader_parameter/water_tint = Color(0, 0.5, 1, 1)
 shader_parameter/tint_strength = 0.5
 shader_parameter/gradient_color_bottom = Color(0, 0, 1, 1)
@@ -40,6 +67,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_pk3u7")
+
+[node name="caustic" type="SubViewport" parent="map" unique_id=1855743459]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="ColorRect2" type="ColorRect" parent="map/caustic" unique_id=897810901]
+texture_filter = 2
+material = SubResource("ShaderMaterial_4w3wq")
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 960.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="map" unique_id=1874101021]
 material = SubResource("ShaderMaterial_vn8ea")
