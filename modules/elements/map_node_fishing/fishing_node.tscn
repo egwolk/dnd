@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dtt7h7upe4kot" path="res://modules/elements/map_node_fishing/fishing_view_state.gd" id="1_7afxh"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7afxh"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7afxh"]
 content_margin_left = 25.0
 content_margin_top = 25.0
@@ -32,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7afxh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="fishing_view/PanelContainer" unique_id=1472215481]
 layout_mode = 2

@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://i6bb6ms1qqjh" path="res://modules/UI/pause_menu/pause_controller.gd" id="1_1tjc1"]
 [ext_resource type="Script" uid="uid://cmvfr3w5grxuq" path="res://modules/UI/pause_menu/pause_menu_state.gd" id="2_bkm6i"]
 [ext_resource type="PackedScene" uid="uid://d3j8d6wn1uegw" path="res://modules/UI/extras_submenu_menu/extras_screen.tscn" id="3_bfhvh"]
+[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/water_bg_overlay.tscn" id="3_bkm6i"]
 [ext_resource type="PackedScene" uid="uid://div4ja38dh8kh" path="res://modules/UI/config_submenu_menu/config_screen.tscn" id="4_re1nv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tjc1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_565ox"]
 content_margin_left = 25.0
@@ -34,6 +37,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="water_bg_overlay" parent="pause_menu_state/pause_menu" unique_id=423199248 instance=ExtResource("3_bkm6i")]
+layout_mode = 1
+
 [node name="PanelContainer" type="PanelContainer" parent="pause_menu_state/pause_menu" unique_id=1296034939]
 layout_mode = 1
 anchors_preset = 15
@@ -41,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1tjc1")
 
 [node name="MarginContainer" type="MarginContainer" parent="pause_menu_state/pause_menu/PanelContainer" unique_id=505818326]
 layout_mode = 2

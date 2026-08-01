@@ -3,275 +3,10 @@
 [ext_resource type="Script" uid="uid://b7d7uw5cbdo1w" path="res://modules/elements/map/map_view_state.gd" id="1_5irdg"]
 [ext_resource type="Script" uid="uid://ei5g3436bemv" path="res://modules/elements/map/map_generator.gd" id="2_db85m"]
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
-[ext_resource type="Shader" uid="uid://d151y3cdkdsr8" path="res://modules/UI/common_shaders/color_filter_blue.gdshader" id="3_4w3wq"]
-[ext_resource type="Shader" uid="uid://dofekwkyym1l3" path="res://modules/UI/common_shaders/water_caustic.gdshader" id="4_t6hy0"]
-[ext_resource type="Texture2D" uid="uid://csgtusfev2ul3" path="res://assets/public/bubbles/bubble_000000.png" id="6_b375j"]
-[ext_resource type="Texture2D" uid="uid://dawm8hv1opq7g" path="res://assets/public/bubbles/bubble_000001.png" id="7_5ytvm"]
-[ext_resource type="Texture2D" uid="uid://bj2bxmef7h7hx" path="res://assets/public/bubbles/bubble_000002.png" id="8_gt5m6"]
-[ext_resource type="Texture2D" uid="uid://b5vvnx683jrkb" path="res://assets/public/bubbles/bubble_000003.png" id="9_6nqhs"]
-[ext_resource type="Texture2D" uid="uid://u80tdqqy2577" path="res://assets/public/bubbles/bubble_000004.png" id="10_w6sl7"]
-[ext_resource type="Texture2D" uid="uid://d22c1loaptmi3" path="res://assets/public/bubbles/bubble_000005.png" id="11_1cgdy"]
-[ext_resource type="Texture2D" uid="uid://dty5515k8rd2e" path="res://assets/public/bubbles/bubble_000006.png" id="12_men2r"]
-[ext_resource type="Texture2D" uid="uid://vl8v5ohycvvn" path="res://assets/public/bubbles/bubble_000007.png" id="13_rxiu7"]
-[ext_resource type="Texture2D" uid="uid://c33deff4xwmt4" path="res://assets/public/bubbles/bubble_000008.png" id="14_okpp2"]
-[ext_resource type="Texture2D" uid="uid://8hyyuq7t14y7" path="res://assets/public/bubbles/bubble_000009.png" id="15_i034a"]
-[ext_resource type="Texture2D" uid="uid://d3uqudg4kj1fc" path="res://assets/public/bubbles/bubble_000010.png" id="16_ipl2j"]
-[ext_resource type="Texture2D" uid="uid://ba3ao5to8v2bk" path="res://assets/public/bubbles/bubble_000011.png" id="17_jwg5h"]
-[ext_resource type="Texture2D" uid="uid://705npv2qhvag" path="res://assets/public/bubbles/bubble_000012.png" id="18_8gdre"]
-[ext_resource type="Texture2D" uid="uid://b4tbldpplfjjy" path="res://assets/public/bubbles/bubble_000013.png" id="19_gt16b"]
-[ext_resource type="Texture2D" uid="uid://bmi2s5m4nvac6" path="res://assets/public/bubbles/bubble_000014.png" id="20_l0hhm"]
-[ext_resource type="Texture2D" uid="uid://c0ve77jvacx2b" path="res://assets/public/bubbles/bubble_000015.png" id="21_0kwjn"]
-[ext_resource type="Texture2D" uid="uid://yyorb61jqa1l" path="res://assets/public/bubbles/bubble_000016.png" id="22_1a0u6"]
-[ext_resource type="Texture2D" uid="uid://dnfw81o4xfo72" path="res://assets/public/bubbles/bubble_000017.png" id="23_5km2l"]
-[ext_resource type="Texture2D" uid="uid://b1y0ftrloj6jq" path="res://assets/public/bubbles/bubble_000018.png" id="24_b1rjj"]
-[ext_resource type="Texture2D" uid="uid://qfi6nh0munkm" path="res://assets/public/bubbles/bubble_000019.png" id="25_8ysh5"]
-[ext_resource type="Texture2D" uid="uid://v2rc78td7afo" path="res://assets/public/bubbles/bubble_000020.png" id="26_y0135"]
-[ext_resource type="Texture2D" uid="uid://bemuj1hohrhqb" path="res://assets/public/bubbles/bubble_000021.png" id="27_nxdqf"]
-[ext_resource type="Texture2D" uid="uid://bkq2nf2n3kcqe" path="res://assets/public/bubbles/bubble_000022.png" id="28_yy7rh"]
-[ext_resource type="Texture2D" uid="uid://c6p2fcotow5o8" path="res://assets/public/bubbles/bubble_000023.png" id="29_wgwvj"]
-[ext_resource type="Texture2D" uid="uid://matf23eejalv" path="res://assets/public/bubbles/bubble_000024.png" id="30_o0qgt"]
-[ext_resource type="Texture2D" uid="uid://cf57245uopl5s" path="res://assets/public/bubbles/bubble_000025.png" id="31_ywoa7"]
-[ext_resource type="Texture2D" uid="uid://d05fvl83gyrrw" path="res://assets/public/bubbles/bubble_000026.png" id="32_d4p6c"]
-[ext_resource type="Texture2D" uid="uid://2bnxdmrm7c1i" path="res://assets/public/bubbles/bubble_000027.png" id="33_q2nfu"]
-[ext_resource type="Texture2D" uid="uid://dfk8aqk2mex4i" path="res://assets/public/bubbles/bubble_000028.png" id="34_jh3d5"]
-[ext_resource type="Texture2D" uid="uid://bombmyvxvfpfi" path="res://assets/public/bubbles/bubble_000029.png" id="35_bbo4r"]
-[ext_resource type="Texture2D" uid="uid://mgnu38goywh1" path="res://assets/public/bubbles/bubble_000030.png" id="36_3sbjk"]
-[ext_resource type="Texture2D" uid="uid://b332xsmkbh7i5" path="res://assets/public/bubbles/bubble_000031.png" id="37_8ao66"]
-[ext_resource type="Texture2D" uid="uid://b16hes5016h1x" path="res://assets/public/bubbles/bubble_000032.png" id="38_r8r60"]
-[ext_resource type="Texture2D" uid="uid://ytej74jj4pct" path="res://assets/public/bubbles/bubble_000033.png" id="39_q2kxn"]
-[ext_resource type="Texture2D" uid="uid://c5low6p54cmtw" path="res://assets/public/bubbles/bubble_000034.png" id="40_h8c27"]
-[ext_resource type="Texture2D" uid="uid://b6dcewdnbfkmu" path="res://assets/public/bubbles/bubble_000035.png" id="41_dolhr"]
-[ext_resource type="Texture2D" uid="uid://du24ocrvlrusb" path="res://assets/public/bubbles/bubble_000036.png" id="42_3yawf"]
-[ext_resource type="Texture2D" uid="uid://biom1wrkrv4o4" path="res://assets/public/bubbles/bubble_000037.png" id="43_mc4in"]
-[ext_resource type="Texture2D" uid="uid://c4drecutygt86" path="res://assets/public/bubbles/bubble_000038.png" id="44_5pf3l"]
-[ext_resource type="Texture2D" uid="uid://wcq6cl3buuft" path="res://assets/public/bubbles/bubble_000039.png" id="45_453tn"]
-[ext_resource type="Texture2D" uid="uid://dca54aout1fc3" path="res://assets/public/bubbles/bubble_000040.png" id="46_s5esu"]
-[ext_resource type="Texture2D" uid="uid://diqynmntun61a" path="res://assets/public/bubbles/bubble_000041.png" id="47_u2ror"]
-[ext_resource type="Texture2D" uid="uid://c6e1ppokydwd2" path="res://assets/public/bubbles/bubble_000042.png" id="48_flj8u"]
-[ext_resource type="Texture2D" uid="uid://r37lwypkfu6p" path="res://assets/public/bubbles/bubble_000043.png" id="49_nolgp"]
-[ext_resource type="Texture2D" uid="uid://clqwkvxk7xw4c" path="res://assets/public/bubbles/bubble_000044.png" id="50_2s74f"]
-[ext_resource type="Texture2D" uid="uid://bm6xflci73lcx" path="res://assets/public/bubbles/bubble_000045.png" id="51_8nl0v"]
-[ext_resource type="Texture2D" uid="uid://bm7d1f7un6d4h" path="res://assets/public/bubbles/bubble_000046.png" id="52_5pkoo"]
-[ext_resource type="Texture2D" uid="uid://ck3gu2s5w2spg" path="res://assets/public/bubbles/bubble_000047.png" id="53_rb5ln"]
-[ext_resource type="Texture2D" uid="uid://c55s68fxw2r7g" path="res://assets/public/bubbles/bubble_000048.png" id="54_x41fm"]
-[ext_resource type="Texture2D" uid="uid://x8ys0ky120xc" path="res://assets/public/bubbles/bubble_000049.png" id="55_vao4c"]
-[ext_resource type="Texture2D" uid="uid://cpgcp0mtbciuc" path="res://assets/public/bubbles/bubble_000050.png" id="56_hwpb0"]
-[ext_resource type="Texture2D" uid="uid://doqut305ye8p3" path="res://assets/public/bubbles/bubble_000051.png" id="57_krv68"]
-[ext_resource type="Texture2D" uid="uid://o37xwfbwyyum" path="res://assets/public/bubbles/bubble_000052.png" id="58_k3u42"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w3wq"]
-shader = ExtResource("4_t6hy0")
-shader_parameter/caustic_color = Color(0.157, 0.694, 0.878, 1)
-shader_parameter/scroll_speed = 0.06
-shader_parameter/noise_scale = 20.0
-shader_parameter/band_min = 0.0450000021375
-shader_parameter/band_max = 1.0
-shader_parameter/edge_softness = 0.0170000008075
-shader_parameter/mask_base_height = 0.0970000046075
-shader_parameter/mask_variation = 0.04400000209
-shader_parameter/mask_noise_scale = 10.0
-shader_parameter/mask_speed = 0.0290000013775
-shader_parameter/bubble_count = 20
-shader_parameter/bubble_speed = 0.202000009595
-shader_parameter/bubble_min_size = 0.00400000019
-shader_parameter/bubble_max_size = 0.0130000006175
-shader_parameter/bubble_wobble = 0.0170000008075
-shader_parameter/bubble_shape_wobble = 0.086000004085
-shader_parameter/bubble_shape_speed = 5.0
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_t6hy0"]
-viewport_path = NodePath("map/caustic")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4w3wq"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4w3wq"]
-noise = SubResource("FastNoiseLite_4w3wq")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vn8ea"]
-resource_local_to_scene = true
-shader = ExtResource("3_4w3wq")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_4w3wq")
-shader_parameter/posterize_levels = 2.0
-shader_parameter/gradient_map_dark = Color(0, 0, 0.3, 1)
-shader_parameter/gradient_map_light = Color(1, 1, 1, 1)
-shader_parameter/gradient_map_strength = 1.0
-shader_parameter/caustic_texture = SubResource("ViewportTexture_t6hy0")
-shader_parameter/caustic_opacity = 0.50000002375
-shader_parameter/water_tint = Color(0, 0.5, 1, 1)
-shader_parameter/tint_strength = 0.5
-shader_parameter/gradient_color_bottom = Color(0, 0, 1, 1)
-shader_parameter/gradient_strength_bottom = 0.9
-shader_parameter/gradient_color_top = Color(0, 1, 1, 1)
-shader_parameter/gradient_strength_top = 0.5
+[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/water_bg_overlay.tscn" id="5_4w3wq"]
+[ext_resource type="Texture2D" uid="uid://dc1vsv8k67hts" path="res://assets/public/map_bg.png" id="5_b375j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn8ea"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t6hy0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_b375j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_5ytvm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_gt5m6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_6nqhs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_w6sl7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_1cgdy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_men2r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_rxiu7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_okpp2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_i034a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_ipl2j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_jwg5h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_8gdre")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_gt16b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_l0hhm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_0kwjn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_1a0u6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_5km2l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_b1rjj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_8ysh5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_y0135")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_nxdqf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_yy7rh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_wgwvj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_o0qgt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_ywoa7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_d4p6c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_q2nfu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_jh3d5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_bbo4r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_3sbjk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_8ao66")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_r8r60")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_q2kxn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_h8c27")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_dolhr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_3yawf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_mc4in")
-}, {
-"duration": 1.0,
-"texture": ExtResource("44_5pf3l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_453tn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("46_s5esu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("47_u2ror")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_flj8u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_nolgp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("50_2s74f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("51_8nl0v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("52_5pkoo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("53_rb5ln")
-}, {
-"duration": 1.0,
-"texture": ExtResource("54_x41fm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("55_vao4c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("56_hwpb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("57_krv68")
-}, {
-"duration": 1.0,
-"texture": ExtResource("58_k3u42")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 12.0
-}]
 
 [node name="map_view_state" type="LimboState" unique_id=852265533]
 process_mode = 3
@@ -287,30 +22,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_pk3u7")
 
-[node name="caustic" type="SubViewport" parent="map" unique_id=1855743459]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(960, 540)
-render_target_update_mode = 4
-
-[node name="ColorRect2" type="ColorRect" parent="map/caustic" unique_id=897810901]
-texture_filter = 2
-material = SubResource("ShaderMaterial_4w3wq")
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = 960.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="map" unique_id=1874101021]
-material = SubResource("ShaderMaterial_vn8ea")
+[node name="water_bg_overlay" parent="map" unique_id=423199248 instance=ExtResource("5_4w3wq")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="mapContainer" type="PanelContainer" parent="map" unique_id=1315907502]
 layout_mode = 1
@@ -337,7 +50,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="NinePatchRect" type="NinePatchRect" parent="map/mapContainer/MarginContainer/ScrollContainer/map_visuals" unique_id=1275169510]
-modulate = Color(1, 1, 1, 0.5372549)
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -345,6 +57,7 @@ offset_right = 100.0
 offset_bottom = 200.0
 grow_vertical = 2
 pivot_offset = Vector2(50, 100)
+texture = ExtResource("5_b375j")
 region_rect = Rect2(13, 17, 332, 332)
 patch_margin_left = 50
 patch_margin_top = 100
@@ -373,16 +86,6 @@ anchor_bottom = 1.0
 offset_left = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="map" unique_id=1280490598]
-modulate = Color(0.15686275, 0.69411767, 0.8784314, 1)
-position = Vector2(960, 603.99994)
-scale = Vector2(1, 0.8703703)
-sprite_frames = SubResource("SpriteFrames_t6hy0")
-animation = &"new_animation"
-autoplay = "new_animation"
-frame = 17
-frame_progress = 0.7556241
 
 [node name="map_generator" type="Node" parent="map" unique_id=1908666363]
 unique_name_in_owner = true

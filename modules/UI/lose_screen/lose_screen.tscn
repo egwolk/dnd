@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cvg3bur7nmbd7"]
 
 [ext_resource type="Script" uid="uid://dy0l8r3uuaxj3" path="res://modules/UI/lose_screen/lose_view_state.gd" id="1_fdehi"]
+[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/water_bg_overlay.tscn" id="2_f23t3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdehi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpf2k"]
 content_margin_left = 25.0
@@ -19,7 +22,6 @@ process_mode = 3
 script = ExtResource("1_fdehi")
 
 [node name="lose_screen" type="Control" parent="." unique_id=1466926242]
-visible = false
 z_index = 3
 layout_mode = 3
 anchors_preset = 15
@@ -28,6 +30,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="water_bg_overlay" parent="lose_screen" unique_id=423199248 instance=ExtResource("2_f23t3")]
+layout_mode = 1
+
 [node name="PanelContainer" type="PanelContainer" parent="lose_screen" unique_id=757415159]
 layout_mode = 1
 anchors_preset = 15
@@ -35,6 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fdehi")
 
 [node name="MarginContainer" type="MarginContainer" parent="lose_screen/PanelContainer" unique_id=1348223833]
 layout_mode = 2

@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://d3j8d6wn1uegw"]
 
 [ext_resource type="Script" uid="uid://cbija5sjsbkd0" path="res://modules/UI/extras_submenu_menu/extras_menu_state.gd" id="1_56ffc"]
+[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/water_bg_overlay.tscn" id="2_1jh36"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56ffc"]
 
 [node name="extras_menu_state" type="LimboState" unique_id=118076578]
 script = ExtResource("1_56ffc")
 
 [node name="extras_screen" type="Control" parent="." unique_id=825406133]
-visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 15
@@ -15,6 +17,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="water_bg_overlay" parent="extras_screen" unique_id=423199248 instance=ExtResource("2_1jh36")]
+layout_mode = 1
+
 [node name="PanelContainer" type="PanelContainer" parent="extras_screen" unique_id=1568974930]
 layout_mode = 1
 anchors_preset = 15
@@ -22,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_56ffc")
 
 [node name="MarginContainer" type="MarginContainer" parent="extras_screen/PanelContainer" unique_id=878217017]
 layout_mode = 2
