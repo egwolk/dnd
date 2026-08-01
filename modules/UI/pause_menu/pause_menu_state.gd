@@ -7,9 +7,11 @@ func _setup() -> void:
 
 func _enter() -> void:
 	pause_ui.visible = true
+	WaterOverlayManager.show_in(pause_ui)
 
 func _exit() -> void:
 	pause_ui.visible = false
+	WaterOverlayManager.hide_overlay()
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_cancel"):

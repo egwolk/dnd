@@ -12,13 +12,14 @@ func _setup() -> void:
 func _enter() -> void:
 	win_ui.visible = true
 	get_tree().paused = true
+	WaterOverlayManager.show_in(win_ui)
 
 	var prev_state = run_controller.get_previous_active_state()
 	continue_button.visible = (prev_state != run_controller.boss_state)
 
 func _exit() -> void:
 	win_ui.visible = false
-
+	WaterOverlayManager.hide_overlay()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false

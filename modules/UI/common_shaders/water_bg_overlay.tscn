@@ -63,7 +63,7 @@ shader = ExtResource("1_iv2hr")
 shader_parameter/caustic_color = Color(0.157, 0.694, 0.878, 1)
 shader_parameter/scroll_speed = 0.0710000033725
 shader_parameter/noise_scale = 20.0
-shader_parameter/band_min = 0.078000003705
+shader_parameter/band_min = 0.0450000021375
 shader_parameter/band_max = 1.0
 shader_parameter/edge_softness = 0.05000000074506
 shader_parameter/mask_curve_strength = -0.02799997758
@@ -90,7 +90,7 @@ shader_parameter/mask_speed = 0.20000000298023
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_myx51"]
 shader = ExtResource("2_bmv4y")
-shader_parameter/fade_height = 0.0770000036575
+shader_parameter/fade_height = 0.04400000209
 shader_parameter/softness = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k16ei"]

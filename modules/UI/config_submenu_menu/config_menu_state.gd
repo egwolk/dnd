@@ -1,12 +1,14 @@
 class_name config_menu_state extends LimboState
 
-@onready var extras_ui = $config_screen
+@onready var config_ui = $config_screen
 
 func _setup() -> void:
-    extras_ui.visible = false
+    config_ui.visible = false
 
 func _enter() -> void:
-    extras_ui.visible = true
+    config_ui.visible = true
+    WaterOverlayManager.show_in(config_ui)
 
 func _exit() -> void:
-    extras_ui.visible = false
+    config_ui.visible = false
+    WaterOverlayManager.hide_overlay()

@@ -19,9 +19,11 @@ func _enter() -> void:
 	map_ui.scroll_to_current_node(can_dismiss)
 	Events.can_dismiss_changed.emit(can_dismiss)
 	get_tree().paused = true
+	WaterOverlayManager.show_in(map_ui)
 
 func _exit() -> void:
 	map_ui.visible = false
+	WaterOverlayManager.hide_overlay()
 
 func _set_buttons_disabled(value: bool) -> void:
 	for button in get_tree().get_nodes_in_group("map_buttons"):

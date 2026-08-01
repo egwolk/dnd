@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b7d7uw5cbdo1w" path="res://modules/elements/map/map_view_state.gd" id="1_5irdg"]
 [ext_resource type="Script" uid="uid://ei5g3436bemv" path="res://modules/elements/map/map_generator.gd" id="2_db85m"]
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
-[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/common_shaders/water_bg_overlay.tscn" id="5_4w3wq"]
 [ext_resource type="Texture2D" uid="uid://dc1vsv8k67hts" path="res://assets/public/map_bg.png" id="5_b375j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn8ea"]
@@ -21,9 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_pk3u7")
-
-[node name="water_bg_overlay" parent="map" unique_id=423199248 instance=ExtResource("5_4w3wq")]
-layout_mode = 1
 
 [node name="mapContainer" type="PanelContainer" parent="map" unique_id=1315907502]
 layout_mode = 1

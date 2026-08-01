@@ -8,10 +8,11 @@ func _setup() -> void:
 func _enter() -> void:
 	get_tree().paused = true
 	lose_ui.visible = true
+	WaterOverlayManager.show_in(lose_ui)
 
 func _exit() -> void:
 	lose_ui.visible = false
-
+	WaterOverlayManager.hide_overlay()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false

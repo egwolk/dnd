@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://v5yv412sgad1"]
 
 [ext_resource type="Script" uid="uid://dypmsgnb57rwu" path="res://modules/UI/win_screen/win_view_state.gd" id="1_sbmbi"]
-[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/common_shaders/water_bg_overlay.tscn" id="2_2uew0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbmbi"]
 
@@ -29,14 +28,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="water_bg_overlay" parent="win_screen" unique_id=423199248 instance=ExtResource("2_2uew0")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1920.0
-offset_bottom = 1080.0
 
 [node name="PanelContainer" type="PanelContainer" parent="win_screen" unique_id=378353028]
 layout_mode = 1

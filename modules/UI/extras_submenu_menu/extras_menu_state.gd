@@ -7,6 +7,8 @@ func _setup() -> void:
 
 func _enter() -> void:
 	extras_ui.visible = true
+	WaterOverlayManager.show_in(extras_ui)
 
 func _exit() -> void:
 	extras_ui.visible = false
+	WaterOverlayManager.hide_overlay()
