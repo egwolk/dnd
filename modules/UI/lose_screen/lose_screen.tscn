@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvg3bur7nmbd7"]
 
 [ext_resource type="Script" uid="uid://dy0l8r3uuaxj3" path="res://modules/UI/lose_screen/lose_view_state.gd" id="1_fdehi"]
-[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/water_bg_overlay.tscn" id="2_f23t3"]
+[ext_resource type="PackedScene" uid="uid://bwv0fftyhk8sx" path="res://modules/UI/common_shaders/water_bg_overlay.tscn" id="2_f23t3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdehi"]
 
