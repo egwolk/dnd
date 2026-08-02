@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.39618975
+rotation = 0.7853982
 pivot_offset = Vector2(960, 540)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vn8ea")
 
