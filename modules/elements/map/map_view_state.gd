@@ -16,10 +16,11 @@ func _setup() -> void:
 
 func _enter() -> void:
 	map_ui.visible = true
-	map_ui.scroll_to_current_node(can_dismiss)
 	Events.can_dismiss_changed.emit(can_dismiss)
 	get_tree().paused = true
 	WaterOverlayManager.show_in(map_ui)
+	await get_tree().process_frame
+	map_ui.scroll_to_current_node(can_dismiss)
 
 func _exit() -> void:
 	map_ui.visible = false

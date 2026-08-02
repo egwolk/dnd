@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dkiymloi52mdj"]
+
+[ext_resource type="Script" uid="uid://cm1u6wgxec61t" path="res://modules/UI/loading_screen/loading_screen.gd" id="1_f050v"]
+[ext_resource type="Texture2D" uid="uid://8gxn4omvubx7" path="res://assets/public/spinning_loader.png" id="2_d7chx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oueq"]
+atlas = ExtResource("2_d7chx")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a56u0"]
+atlas = ExtResource("2_d7chx")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7jxs"]
+atlas = ExtResource("2_d7chx")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_livdn"]
+atlas = ExtResource("2_d7chx")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gk5r"]
+atlas = ExtResource("2_d7chx")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thr6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oueq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a56u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7jxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_livdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gk5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="loading_screen" type="Control" unique_id=1805649772]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f050v")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2058613873]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2017672425]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1848035900]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "LOADING SCREEN"
+horizontal_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer" unique_id=558168573]
+position = Vector2(971, 677)
+scale = Vector2(3.5208333, 3.5208333)
+sprite_frames = SubResource("SpriteFrames_thr6k")
+autoplay = "default"
+frame_progress = 0.18316211

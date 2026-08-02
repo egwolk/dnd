@@ -66,9 +66,6 @@ func create_map() -> void:
 
 	line_renderer.reveal_traveled_path(map_data)
 
-	await get_tree().process_frame
-	scroll_to_current_node()
-
 func scroll_to_current_node(prefer_current_node: bool = false) -> void:
 	var max_scroll := scroller.get_max_scroll()
 	var target_scroll: int
