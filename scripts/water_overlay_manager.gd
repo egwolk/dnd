@@ -14,15 +14,12 @@ func _ready() -> void:
 
 
 func show_in(target: Control) -> void:
-	var t0 := Time.get_ticks_msec()
 	if _overlay.get_parent() != target:
 		_overlay.reparent(target, false)
 		target.move_child(_overlay, 0)
 		_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_overlay.visible = true
 	await get_tree().process_frame
-	print("first live show took: ", Time.get_ticks_msec() - t0, "ms")
-
 
 func hide_overlay() -> void:
 	_overlay.visible = false

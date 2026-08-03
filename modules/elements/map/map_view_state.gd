@@ -2,6 +2,9 @@ class_name map_view_state extends LimboState
 
 @onready var map_ui = $map
 
+const INTRO_SCROLL_DELAY := 0.6
+
+var is_first_visit := true
 var can_dismiss: bool = false:
 	set(value):
 		can_dismiss = value
@@ -15,13 +18,25 @@ func _setup() -> void:
 	map_ui.unlock_node(0)
 
 func _enter() -> void:
-	map_ui.visible = true
 	Events.can_dismiss_changed.emit(can_dismiss)
 	get_tree().paused = true
 	WaterOverlayManager.show_in(map_ui)
 	await get_tree().process_frame
-	map_ui.scroll_to_current_node(can_dismiss)
 
+	if is_first_visit:
+		is_first_visit = false
+		map_ui.visible = true
+		_set_buttons_disabled(true)
+		map_ui.lock_scroll()
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().create_timer(INTRO_SCROLL_DELAY).timeout
+		await map_ui.play_intro_scroll(can_dismiss)
+		_set_buttons_disabled(can_dismiss)
+	else:
+		map_ui.scroll_to_current_node(can_dismiss)
+		map_ui.visible = true
+		
 func _exit() -> void:
 	map_ui.visible = false
 	WaterOverlayManager.hide_overlay()

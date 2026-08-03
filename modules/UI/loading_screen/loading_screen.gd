@@ -33,7 +33,6 @@ func _finish_load() -> void:
 
 	var warmer := ShaderWarmer.new()
 	add_child(warmer)
-	var t0 := Time.get_ticks_msec()
 	await warmer.warm_up([
 		preload("res://modules/UI/common_shaders/water_caustic.gdshader"),
 		preload("res://modules/UI/common_shaders/top_blur.gdshader"),
@@ -43,8 +42,6 @@ func _finish_load() -> void:
 		preload("res://modules/elements/map/map_select_animation.gdshader"),
 		preload("res://modules/elements/map/map_line_animation.gdshader"),
 	])
-
-	print("warm-up took: ", Time.get_ticks_msec() - t0, "ms")
 	warmer.queue_free()
 
 	var packed_scene: PackedScene = ResourceLoader.load_threaded_get(_target_path)

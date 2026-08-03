@@ -19,6 +19,7 @@ const BOTTOM_MARGIN := 200
 const TOP_MARGIN := MapGenerator.Y_DIST + 200
 const BACKGROUND_HORIZONTAL_PADDING := 150
 const EXTRA_SCROLL_PADDING := 100
+const INTRO_SCROLL_DURATION := 1.6
 
 func _ready() -> void:
 	line_renderer = MapLineRenderer.new(lines)
@@ -66,7 +67,24 @@ func create_map() -> void:
 
 	line_renderer.reveal_traveled_path(map_data)
 
+func lock_scroll() -> void:
+	scroller.locked = true
+	scroll_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func unlock_scroll() -> void:
+	scroller.locked = false
+	scroll_container.mouse_filter = Control.MOUSE_FILTER_STOP
+
 func scroll_to_current_node(prefer_current_node: bool = false) -> void:
+	scroller.set_target(_compute_target_scroll(prefer_current_node), true)
+
+func play_intro_scroll(prefer_current_node: bool = false) -> void:
+	var target_scroll := _compute_target_scroll(prefer_current_node)
+	scroller.set_target(0, true)
+	var tween := scroller.animate_to(target_scroll, INTRO_SCROLL_DURATION, self)
+	await tween.finished
+
+func _compute_target_scroll(prefer_current_node: bool = false) -> int:
 	var max_scroll := scroller.get_max_scroll()
 	var target_scroll: int
 
@@ -91,8 +109,7 @@ func scroll_to_current_node(prefer_current_node: bool = false) -> void:
 		else:
 			target_scroll = max_scroll
 
-	target_scroll = clampi(target_scroll, 0, max_scroll)
-	scroller.set_target(target_scroll, true)
+	return clampi(target_scroll, 0, max_scroll)
 
 func unlock_node(which_node: int = steps_taken) -> void:
 	for map_node: MapNodeButton in steps.get_children():

@@ -24,6 +24,8 @@ var drag_start_scroll: float
 var drag_last_delta_y: float
 var last_wheel_time_ms: int = -WHEEL_RELEASE_MS
 
+var locked := false
+
 func _init(p_scroll_container: ScrollContainer, p_visuals: Control, p_overscroll_targets: Array[Control] = []) -> void:
 	scroll_container = p_scroll_container
 	visuals = p_visuals
@@ -33,6 +35,8 @@ func _init(p_scroll_container: ScrollContainer, p_visuals: Control, p_overscroll
 	last_applied_scroll = scroll_container.scroll_vertical
 
 func handle_input(event: InputEvent) -> bool:
+	if locked:
+		return false
 	var handled := false
 
 	if event.is_action_pressed("scroll_up"):
@@ -63,6 +67,8 @@ func handle_input(event: InputEvent) -> bool:
 	return handled
 
 func update(delta: float) -> void:
+	if locked:
+		return
 	var max_scroll := get_max_scroll()
 	var holding := dragging or _wheel_active()
 
@@ -92,7 +98,8 @@ func update(delta: float) -> void:
 		last_overscroll_offset = overscroll_offset
 
 func get_max_scroll() -> int:
-	return int(visuals.custom_minimum_size.y - scroll_container.size.y)
+	var v_scroll := scroll_container.get_v_scroll_bar()
+	return maxi(0, int(v_scroll.max_value - v_scroll.page))
 
 func set_target(value: float, snap: bool = false) -> void:
 	var clamped := clampi(int(value), 0, get_max_scroll())
@@ -105,6 +112,25 @@ func set_target(value: float, snap: bool = false) -> void:
 			for node in overscroll_targets:
 				node.position.y -= last_overscroll_offset
 			last_overscroll_offset = 0.0
+
+func animate_to(target: float, duration: float, host: Node) -> Tween:
+	locked = true
+	var max_scroll := get_max_scroll()
+	var clamped := clampf(target, 0, max_scroll)
+	scroll_target = clamped
+
+	var tween := host.create_tween()
+	tween.tween_method(_apply_animated_scroll, current_scroll, clamped, duration)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.finished.connect(func(): locked = false)
+	return tween
+
+func _apply_animated_scroll(value: float) -> void:
+	current_scroll = value
+	var max_scroll := get_max_scroll()
+	var clamped_display := clampf(current_scroll, 0, max_scroll)
+	scroll_container.scroll_vertical = roundi(clamped_display)
+	last_applied_scroll = scroll_container.scroll_vertical
 
 func _wheel_active() -> bool:
 	return Time.get_ticks_msec() - last_wheel_time_ms < WHEEL_RELEASE_MS
