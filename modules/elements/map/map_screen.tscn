@@ -3,9 +3,15 @@
 [ext_resource type="Script" uid="uid://b7d7uw5cbdo1w" path="res://modules/elements/map/map_view_state.gd" id="1_5irdg"]
 [ext_resource type="Script" uid="uid://ei5g3436bemv" path="res://modules/elements/map/map_generator.gd" id="2_db85m"]
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
-[ext_resource type="Texture2D" uid="uid://dc1vsv8k67hts" path="res://assets/public/map_bg.png" id="5_b375j"]
+[ext_resource type="Shader" uid="uid://5tjystdsd5qs" path="res://modules/elements/map/map_triangle_mask.gdshader" id="5_4w3wq"]
+[ext_resource type="Texture2D" uid="uid://drxt5xe4akxs4" path="res://assets/public/triangle_mask.png" id="6_t6hy0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn8ea"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6hy0"]
+shader = ExtResource("5_4w3wq")
+shader_parameter/mask = ExtResource("6_t6hy0")
+shader_parameter/scale = 1.0
 
 [node name="map_view_state" type="LimboState" unique_id=852265533]
 process_mode = 3
@@ -28,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.6684611
 pivot_offset = Vector2(960, 540)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vn8ea")
 
@@ -52,7 +59,6 @@ offset_right = 100.0
 offset_bottom = 200.0
 grow_vertical = 2
 pivot_offset = Vector2(50, 100)
-texture = ExtResource("5_b375j")
 region_rect = Rect2(13, 17, 332, 332)
 patch_margin_left = 50
 patch_margin_top = 100
@@ -85,3 +91,52 @@ grow_vertical = 2
 [node name="map_generator" type="Node" parent="map" unique_id=1908666363]
 unique_name_in_owner = true
 script = ExtResource("2_db85m")
+
+[node name="ColorRect" type="ColorRect" parent="map" unique_id=511878966]
+visible = false
+material = SubResource("ShaderMaterial_t6hy0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 561.0
+offset_top = 860.0
+offset_right = 2531.585
+offset_bottom = 2864.2998
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.4993114
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="map" unique_id=77205713]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -894.0
+offset_top = -472.00003
+offset_right = -894.0
+offset_bottom = -472.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.9075712
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+color = Color(0.057328485, 0, 0.496419, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="map" unique_id=623807453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 894.0
+offset_top = 472.0
+offset_right = 894.0
+offset_bottom = 472.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.9075712
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+color = Color(0.05882353, 0, 0.49803922, 1)

@@ -9,7 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hgjac"]
 resource_local_to_scene = true
 shader = ExtResource("1_e7yb7")
-shader_parameter/outline_color = Color(0.94509804, 0.85490197, 0.6156863, 1)
+shader_parameter/outline_color = Color(0, 0.5019608, 1, 0.49803922)
 shader_parameter/outline_width = 32.0
 shader_parameter/sample_count = 8
 
@@ -75,6 +75,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_hgjac")
 offset_right = 64.0
 offset_bottom = 64.0
+rotation = -0.6684611
 pivot_offset = Vector2(32, 32)
 texture_normal = ExtResource("1_1c22q")
 ignore_texture_size = true
