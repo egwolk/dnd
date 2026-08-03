@@ -29,10 +29,23 @@ func _process(_delta: float) -> void:
 			_finish_load()
 
 func _finish_load() -> void:
-	# Let this frame actually render before we do the instantiate/_ready work
-	# (map generation, shader warm-up) — otherwise the last loading-screen
-	# frame never makes it to the screen and it still looks like a freeze.
 	await get_tree().process_frame
+
+	var warmer := ShaderWarmer.new()
+	add_child(warmer)
+	var t0 := Time.get_ticks_msec()
+	await warmer.warm_up([
+		preload("res://modules/UI/common_shaders/water_caustic.gdshader"),
+		preload("res://modules/UI/common_shaders/top_blur.gdshader"),
+		preload("res://modules/UI/common_shaders/bubbles_far.gdshader"),
+		preload("res://modules/UI/common_shaders/color_filter_blue.gdshader"),
+		preload("res://modules/elements/map/map_node_outline.gdshader"),
+		preload("res://modules/elements/map/map_select_animation.gdshader"),
+		preload("res://modules/elements/map/map_line_animation.gdshader"),
+	])
+
+	print("warm-up took: ", Time.get_ticks_msec() - t0, "ms")
+	warmer.queue_free()
 
 	var packed_scene: PackedScene = ResourceLoader.load_threaded_get(_target_path)
 	var new_scene = packed_scene.instantiate()
