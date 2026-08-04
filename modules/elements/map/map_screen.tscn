@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ei5g3436bemv" path="res://modules/elements/map/map_generator.gd" id="2_db85m"]
 [ext_resource type="Script" uid="uid://8eqdnhjt0wuj" path="res://modules/elements/map/map.gd" id="2_pk3u7"]
 [ext_resource type="Shader" uid="uid://5tjystdsd5qs" path="res://modules/elements/map/map_triangle_mask.gdshader" id="5_4w3wq"]
+[ext_resource type="Shader" uid="uid://dixpd4m1ljoi4" path="res://modules/UI/common_shaders/wavy_edge.gdshader" id="6_jdpqo"]
 [ext_resource type="Texture2D" uid="uid://drxt5xe4akxs4" path="res://assets/public/triangle_mask.png" id="6_t6hy0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn8ea"]
@@ -12,6 +13,22 @@
 shader = ExtResource("5_4w3wq")
 shader_parameter/mask = ExtResource("6_t6hy0")
 shader_parameter/scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfw3x"]
+shader = ExtResource("6_jdpqo")
+shader_parameter/amplitude = 0.05
+shader_parameter/frequency = 9.665
+shader_parameter/speed = 0.715
+shader_parameter/edge_thickness = 0.15
+shader_parameter/edge = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdpqo"]
+shader = ExtResource("6_jdpqo")
+shader_parameter/amplitude = 0.05
+shader_parameter/frequency = 9.665
+shader_parameter/speed = 0.715
+shader_parameter/edge_thickness = 0.15
+shader_parameter/edge = 0
 
 [node name="map_view_state" type="LimboState" unique_id=852265533]
 process_mode = 3
@@ -110,6 +127,7 @@ pivot_offset = Vector2(960, 540)
 mouse_filter = 2
 
 [node name="ColorRect2" type="ColorRect" parent="map" unique_id=77205713]
+material = SubResource("ShaderMaterial_cfw3x")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,9 +141,9 @@ grow_vertical = 2
 rotation = -0.9075712
 pivot_offset = Vector2(960, 540)
 mouse_filter = 2
-color = Color(0.057328485, 0, 0.496419, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="map" unique_id=623807453]
+material = SubResource("ShaderMaterial_jdpqo")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,4 +157,3 @@ grow_vertical = 2
 rotation = -0.9075712
 pivot_offset = Vector2(960, 540)
 mouse_filter = 2
-color = Color(0.05882353, 0, 0.49803922, 1)
