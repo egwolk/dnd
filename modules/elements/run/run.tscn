@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b5k2b8yd1k4tk" path="res://modules/elements/map_node_event/event_node.tscn" id="9_8wlpx"]
 [ext_resource type="PackedScene" uid="uid://c0gdfmjmy3b0x" path="res://modules/elements/test_sprite/test_player.tscn" id="11_dlggn"]
 
-[node name="run" type="Control" unique_id=182202977]
+[node name="run" type="Control" unique_id=182202977 groups=["runRoot"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +62,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="test_player" parent="." unique_id=1936438655 instance=ExtResource("11_dlggn")]
-z_index = 2
 position = Vector2(394, 806)
 
 [node name="level_sample" type="Label" parent="." unique_id=1320329272]
@@ -83,7 +82,3 @@ offset_top = 686.0
 offset_right = 558.0
 offset_bottom = 709.0
 text = "press ← or → to test player state change"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=751590399]
-process_mode = 3
-autoplay = true

@@ -40,6 +40,7 @@ window/size/mode=3
 [global_group]
 
 map_buttons=""
+runRoot=""
 
 [gui]
 

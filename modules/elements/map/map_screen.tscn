@@ -127,6 +127,7 @@ pivot_offset = Vector2(960, 540)
 mouse_filter = 2
 
 [node name="ColorRect2" type="ColorRect" parent="map" unique_id=77205713]
+visible = false
 material = SubResource("ShaderMaterial_cfw3x")
 layout_mode = 1
 anchors_preset = 15
@@ -143,6 +144,7 @@ pivot_offset = Vector2(960, 540)
 mouse_filter = 2
 
 [node name="ColorRect3" type="ColorRect" parent="map" unique_id=623807453]
+visible = false
 material = SubResource("ShaderMaterial_jdpqo")
 layout_mode = 1
 anchors_preset = 15
