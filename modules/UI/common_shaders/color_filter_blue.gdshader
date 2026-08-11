@@ -9,17 +9,8 @@ uniform vec4 gradient_map_dark : source_color = vec4(0.0, 0.0, 0.3, 1.0);
 uniform vec4 gradient_map_light : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float gradient_map_strength : hint_range(0.0, 1.0) = 1.0;
 
-uniform sampler2D bubbles_far : filter_linear, repeat_disable;
-uniform float bubbles_far_opacity : hint_range(0.0, 1.0) = 1.0;
-
-uniform sampler2D bubble_texture : filter_linear, repeat_disable;
-uniform float bubble_opacity : hint_range(0.0, 1.0) = 1.0;
-
-uniform sampler2D caustic_texture : filter_linear, repeat_disable;
-uniform float caustic_opacity : hint_range(0.0, 1.0) = 1.0; 
-
-uniform sampler2D caustic_texture2 : filter_linear, repeat_disable;
-uniform float caustic_opacity2 : hint_range(0.0, 1.0) = 1.0; 
+uniform sampler2D caustics_texture : filter_linear, repeat_disable;
+uniform float caustics_opacity : hint_range(0.0, 1.0) = 1.0;
 
 uniform vec4 water_tint : source_color = vec4(0.0, 0.5, 1.0, 1.0);
 uniform float tint_strength : hint_range(0.0, 1.0) = 0.5;
@@ -44,18 +35,8 @@ void fragment() {
 
 	color = mix(color, water_tint.rgb, tint_strength);
 
-	vec4 buble_far_sample = texture(bubbles_far, UV);
-	color = mix(color, buble_far_sample.rgb, buble_far_sample.a * bubbles_far_opacity);
-
-	vec4 bubble_sample = texture(bubble_texture, UV);
-	color = mix(color, bubble_sample.rgb, bubble_sample.a * bubble_opacity);
-	
-	vec4 caustic_sample = texture(caustic_texture, UV);
-	color = mix(color, caustic_sample.rgb, caustic_sample.a * caustic_opacity);
-
-	vec4 caustic_sample2 = texture(caustic_texture2, UV);
-	color = mix(color, caustic_sample2.rgb, caustic_sample2.a * caustic_opacity2);
-	
+	vec4 caustics_sample = texture(caustics_texture, UV);
+	color = mix(color, caustics_sample.rgb, caustics_sample.a * caustics_opacity);
 
 	float gradient_factor_bottom = UV.y * gradient_strength_bottom * gradient_color_bottom.a;
 	color = mix(color, gradient_color_bottom.rgb, gradient_factor_bottom);

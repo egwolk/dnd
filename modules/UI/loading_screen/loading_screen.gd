@@ -34,9 +34,7 @@ func _finish_load() -> void:
 	var warmer := ShaderWarmer.new()
 	add_child(warmer)
 	await warmer.warm_up([
-		preload("res://modules/UI/common_shaders/water_caustic.gdshader"),
-		preload("res://modules/UI/common_shaders/water_bubble.gdshader"),
-		preload("res://modules/UI/common_shaders/bubbles_far.gdshader"),
+		preload("res://modules/UI/common_shaders/water_caustics.gdshader"),
 		preload("res://modules/UI/common_shaders/color_filter_blue.gdshader"),
 		preload("res://modules/elements/map/map_node_outline.gdshader"),
 		preload("res://modules/elements/map/map_select_animation.gdshader"),

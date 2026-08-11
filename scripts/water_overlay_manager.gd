@@ -14,18 +14,12 @@ func _ready() -> void:
 	_source.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(_source)
 
-	var bubbles_vp: SubViewport = _source.get_node("bubbles")
-	var bubbles_far_vp: SubViewport = _source.get_node("bubbles_far")
-	var caustic_vp: SubViewport = _source.get_node("caustic")
-	var caustic2_vp: SubViewport = _source.get_node("caustic2")
+	var caustics: SubViewport = _source.get_node("caustics")
 
 	var source_effect: ColorRect = _source.get_node("underwater_effect")
 	_display_material = source_effect.material.duplicate()
 
-	_display_material.set_shader_parameter("bubbles_far", bubbles_far_vp.get_texture())
-	_display_material.set_shader_parameter("bubble_texture", bubbles_vp.get_texture())
-	_display_material.set_shader_parameter("caustic_texture", caustic_vp.get_texture())
-	_display_material.set_shader_parameter("caustic_texture2", caustic2_vp.get_texture())
+	_display_material.set_shader_parameter("caustics_texture", caustics.get_texture())
 
 	_display = ColorRect.new()
 	_display.name = "water_bg_display"
