@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b5k2b8yd1k4tk" path="res://modules/elements/map_node_event/event_node.tscn" id="9_8wlpx"]
 [ext_resource type="PackedScene" uid="uid://c0gdfmjmy3b0x" path="res://modules/elements/test_sprite/test_player.tscn" id="11_dlggn"]
 
-[node name="run" type="Control" unique_id=182202977 groups=["runRoot"]]
+[node name="run" type="Control" unique_id=182202977]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

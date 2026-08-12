@@ -14,7 +14,7 @@ var can_dismiss: bool = false:
 func _setup() -> void:
 	map_ui.visible = false
 	Events.selected.connect(_on_node_selected)
-	map_ui.generate_new_map()
+	await map_ui.generate_new_map()
 	map_ui.unlock_node(0)
 
 func _enter() -> void:

@@ -18,6 +18,7 @@ var random_node_type_weights = {
 
 var random_node_type_total_weight := 0
 var map_data: Array[Array]
+var rng := RandomNumberGenerator.new() 
 
 func generate_map() -> Array[Array]:
 	map_data = _generate_initial_grid()
@@ -44,7 +45,7 @@ func _generate_initial_grid() -> Array[Array]:
 		for j in MAP_WIDTH:
 			var current_node := MapNode.new()
 			var placement_randomness := 0 if i == STEPS - 1 else PLACEMENT_RANDOMNESS
-			var offset := Vector2(randf(), randf()) * placement_randomness
+			var offset := Vector2(rng.randf(), rng.randf()) * placement_randomness
 
 			current_node.position = Vector2(j * X_DIST, i * -Y_DIST) + offset
 			current_node.row = i
@@ -69,7 +70,7 @@ func _get_random_starting_points() -> Array[int]:
 		y_coordinates = []
 
 		for i in PATHS:
-			var starting_point := randi_range(0, MAP_WIDTH - 1)
+			var starting_point := rng.randi_range(0, MAP_WIDTH - 1)
 			if not y_coordinates.has(starting_point):
 				unique_points += 1
 			y_coordinates.append(starting_point)
@@ -80,7 +81,7 @@ func _setup_connection(i: int, j: int) -> int:
 	var current_node := map_data[i][j] as MapNode
 
 	while not next_node or _would_cross_existing_path(i, j, next_node):
-		var random_j := clampi(randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
+		var random_j := clampi(rng.randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
 		next_node = map_data[i + 1][random_j]
 	current_node.next_nodes.append(next_node)
 	return next_node.column
@@ -183,7 +184,7 @@ func _node_has_parent_of_type(step: MapNode, type: MapNode.Type) -> bool:
 	return false
 
 func _get_random_node_type_by_weight() -> MapNode.Type:
-	var roll := randf_range(0.0, random_node_type_total_weight)
+	var roll := rng.randf_range(0.0, random_node_type_total_weight)
 
 	for type: MapNode.Type in random_node_type_weights:
 		if random_node_type_weights[type] > roll:

@@ -14,6 +14,7 @@ var steps_taken: int
 var last_node: MapNode
 var line_renderer: MapLineRenderer
 var scroller: MapScroller
+var generation_thread: Thread
 
 const BOTTOM_MARGIN := 200
 const TOP_MARGIN := MapGenerator.Y_DIST + 200
@@ -35,10 +36,26 @@ func _process(delta: float) -> void:
 	scroller.update(delta)
 
 
+
 func generate_new_map() -> void:
 	steps_taken = 0
-	map_data = map_generator.generate_map()
+	if generation_thread and generation_thread.is_alive():
+		await Events.map_ready
+	generation_thread = Thread.new()
+	generation_thread.start(_generate_map_threaded)
+	await Events.map_ready
+
+func _generate_map_threaded() -> void:
+	var start := Time.get_ticks_usec()
+	var data := map_generator.generate_map()
+	print("generate_map() took %.3f ms" % [(Time.get_ticks_usec() - start) / 1000.0])
+	call_deferred("_on_map_data_ready", data)
+
+func _on_map_data_ready(data: Array[Array]) -> void:
+	map_data = data
 	create_map()
+	generation_thread.wait_to_finish()
+	Events.map_ready.emit()
 
 func create_map() -> void:
 	var map_width_pixels := MapGenerator.X_DIST * (MapGenerator.MAP_WIDTH - 1)

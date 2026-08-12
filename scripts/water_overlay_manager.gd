@@ -61,6 +61,6 @@ func reclaim() -> void:
 	_display.visible = false
 	if _display.get_parent() and _display.get_parent() != self:
 		_display.get_parent().remove_child(_display)
-	
+
 	if _display.get_parent() != self:
 		add_child.call_deferred(_display)
